@@ -34,6 +34,7 @@ interface User {
   linkedIn?: string;
   github?: string;
   portfolio?: string;
+  mfaEnabled: boolean;
   authProviders?: AuthProvider[];
   roles: UserRole[];
 }

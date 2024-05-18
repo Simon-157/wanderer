@@ -7,45 +7,107 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-model User {
-  id            Int         @id @default(autoincrement())
-  email         String      @unique
-  uniqueId      String      @unique
-  password      String
-  firstName     String
-  lastName      String
-  role          Role        @default(USER)
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
-  phoneNumber   String?
-  bio           String?
-  profileImage  String?
-  linkedIn      String?
-  github        String?
-  portfolio     String?
-  authProviders AuthProvider[]
-  roles         UserRole[]
+model appUser {
+  id              Int               @id @default(autoincrement())
+  email           String            @unique
+  password        String
+  firstName       String?
+  lastName        String?
+  role            UserRole          @default(USER)
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  phoneNumber     String?
+  bio             String?
+  profileImage    String?
+  linkedIn        String?
+  mfaEnabled      Boolean           @default(true)
+  AuthProvider    AuthProvider[]
+  PracticeSession PracticeSession[]
+  Submissions     Submission[]
 }
 
 model AuthProvider {
-  id        Int       @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   userId    Int
-  provider  String    // "google" or "github"
-  providerId String   // Google or GitHub user ID
-  user      User      @relation(fields: [userId], references: [id])
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  googleId  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      appUser  @relation(fields: [userId], references: [id])
 }
 
-model UserRole {
-  id     Int    @id @default(autoincrement())
-  role   Role
-  user   User   @relation(fields: [userId], references: [id])
-  userId Int
+model PracticeSession {
+  id              Int           @id @default(autoincrement())
+  userId          Int
+  challengeId     Int
+  submissions     Submission[]  // One-to-many relation
+  startedAt       DateTime      @default(now())
+  endedAt         DateTime?
+  user            appUser       @relation(fields: [userId], references: [id])
+  challenge       Challenge     @relation(fields: [challengeId], references: [challenge_id])
 }
 
-enum Role {
+
+model Challenge {
+  challenge_id    Int           @id @default(autoincrement())
+  title           String
+  description     String
+  difficulty      Difficulty
+  topicTags       Json
+  similarQuestions Json
+  sampleTestCase  Json
+  hints           Json
+  created_at      DateTime      @default(now())
+  updated_at      DateTime      @updatedAt
+  Submissions     Submission[]
+  PracticeSession PracticeSession[]
+}
+
+
+model Submission {
+  submission_id    Int           @id @default(autoincrement())
+  user_id          Int
+  challenge_id     Int
+  code             String
+  status           SubmissionStatus
+  runtime          Float?
+  memory           Float?
+  created_at       DateTime      @default(now())
+  user             appUser       @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  challenge        Challenge     @relation(fields: [challenge_id], references: [challenge_id], onDelete: Cascade)
+  SubmissionLanguages SubmissionLanguage[]
+  PracticeSession   PracticeSession? @relation(fields: [practiceSessionId], references: [id])
+  practiceSessionId Int?            
+}
+
+
+model Language {
+  language_id      Int           @id @default(autoincrement())
+  name             String        @unique
+  SubmissionLanguages SubmissionLanguage[]
+}
+
+model SubmissionLanguage {
+  submission_id    Int
+  language_id      Int
+  submission       Submission     @relation(fields: [submission_id], references: [submission_id], onDelete: Cascade)
+  language         Language       @relation(fields: [language_id], references: [language_id], onDelete: Cascade)
+  @@id([submission_id, language_id])
+}
+
+// Define enums
+enum UserRole {
   USER
   ADMIN
+}
+
+enum Difficulty {
+  Easy
+  Medium
+  Hard
+}
+
+enum SubmissionStatus {
+  Pending
+  Accepted
+  Rejected
 }

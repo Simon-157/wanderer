@@ -28,8 +28,11 @@ router.get(
 router.post(
     "/local",
     passport.authenticate("local", {
-        failWithError: true,
         failureRedirect: "/auth/failure",
+        session: true,
+        successRedirect: process.env.NODE_ENV == "production"
+                ? process.env.CLIENT_URI_CALLBACK_PROD
+                : process.env.CLIENT_URI_CALLBACK,
     }),
     (req: Request, res: Response, next: NextFunction) => {
         try {
@@ -46,14 +49,10 @@ router.post(
     }
 );
 
-router.get("/user", (req: Request, res: Response) => {
-    res.status(200).json(req.user ? { ...req.user } : {});
-});
 
 router.get("/failure", (req: Request, res: Response) => {
     res.status(401).json({ message: "Login failed" });
 });
-
 
 
 router.get("/logout", (req: Request, res: Response, next: NextFunction) => {
@@ -87,7 +86,7 @@ router.post("/register", async (req, res) => {
     const { email, password, firstName, lastName } = req.body;
 
     try {
-        const existingUser = await prisma.user.findFirst({ where: { email } });
+        const existingUser = await prisma.appUser.findFirst({ where: { email } });
 
         if (existingUser) {
             return res.status(400).send({ message: "User already exists" });
@@ -95,10 +94,9 @@ router.post("/register", async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const user = await prisma.user.create({
+        const user = await prisma.appUser.create({
             data: {
                 email,
-                uniqueId: randomUUID(),
                 password: hashedPassword,
                 firstName: firstName,
                 lastName: lastName,

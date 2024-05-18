@@ -1,10 +1,9 @@
-// googleAuth.ts
-
 import "dotenv/config";
 import passport from "passport";
 import { Strategy as GoogleStrategy, StrategyOptions } from "passport-google-oauth20";
 import { prisma } from "@/config/prisma";
 import { randomUUID } from "crypto";
+import { logger } from "@/config/logger";
 
 
 const googleStrategyMiddleware = new GoogleStrategy(
@@ -30,45 +29,47 @@ const googleStrategyMiddleware = new GoogleStrategy(
     done: any
   ) => {
     try {
-      const user = await prisma.user.findFirst({
+      const user = await prisma.appUser.findFirst({
         where: {
           OR: [
             {
-              authProviders: {
+              AuthProvider: {
                 some: {
-                  providerId: profile.id,
+                  googleId: profile.id,
                 },
               },
             },
             { email: profile.emails![0].value },
           ],
         },
-        include: { authProviders: true },
+        include: { AuthProvider: true },
       });
 
-      console.log(user);
+      // console.log(user);
 
       if (user) {
         done(null, user);
       } else {
         if (profile.photos && profile.emails) {
-        const newUser = await prisma.user.create({
+          const newUser = await prisma.appUser.create({
             data: {
-                email: profile.emails[0].value,
-                firstName: profile.name.givenName,
-                lastName: profile.name.familyName,
-                profileImage: profile.photos[0].value,
-                uniqueId: randomUUID(),
-                authProviders: {
-                    create: {
-                        provider: 'google',
-                        providerId: profile.id,
-                    },
+              email: profile.emails[0].value,
+              password: randomUUID(),
+              firstName: profile.name.givenName,
+              lastName: profile.name.familyName,
+              profileImage: profile.photos[0].value,
+              phoneNumber: null,
+              bio: null,
+              linkedIn: null,
+              mfaEnabled: false, // Disable MFA by default
+              AuthProvider: {
+                create: {
+                  googleId: profile.id,
                 },
-                password: '',
+              },
             },
-            include: { authProviders: true },
-        });
+            include: { AuthProvider: true },
+          });
 
           console.log(newUser);
           done(null, newUser);
@@ -83,7 +84,7 @@ const googleStrategyMiddleware = new GoogleStrategy(
 
 const serializeMiddleware = (user: any, done: any) => {
   try {
-    console.log(user);
+    // console.log(user);
     done(null, user.id);
   } catch (err) {
     console.error(err);
@@ -91,20 +92,22 @@ const serializeMiddleware = (user: any, done: any) => {
   }
 };
 
-const deserializeMiddleware = async (userId: number, done: any) => {
+const deserializeMiddleware = async (id: any, done: any) => {
+  console.log(id);
   try {
-    const user = await prisma.user.findFirst({
-      where: { id: userId },
-      include: { authProviders: true },
+    logger.info(`auth user ID ${id}`);
+    const user = await prisma.appUser.findFirst({
+      where: { id: id },
+      include: { AuthProvider: true },
     });
 
-    if (user) {
-      done(null, user);
-    } else {
-      done(null, null);
-    }
+    logger.log({ level: "info", message: `${user}` });
+
+
+    done(null, user);
+ 
   } catch (err) {
-    console.error(err);
+    logger.log({ level: "error", message: `${err}` });
     done(err, null);
   }
 };
