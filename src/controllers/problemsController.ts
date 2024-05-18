@@ -28,6 +28,26 @@ export const createChallenge = async (req: any, res: any) : Promise<void> => {
 }
 
 
+export const createManyChallenges = async (req: any, res: any): Promise<void> => {
+    const { challenges } = req.body;
+
+    if (!challenges || !Array.isArray(challenges)) {
+        res.status(400).json({ message: "Invalid or missing challenges array" });
+        return;
+    }
+
+    try {
+        const createdChallenges = await prisma.challenge.createMany({
+            data: challenges,
+        });
+
+        res.status(201).json({ message: "Challenges created successfully", challenges: createdChallenges });
+    } catch (error) {
+        res.status(500).json({ message: "Failed to create challenges", error });
+    }
+}
+
+
 export const getChallenges = async (req: any, res: any) : Promise<void> => {
     try {
         const challenges = await prisma.challenge.findMany();

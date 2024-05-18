@@ -1,5 +1,5 @@
 import { createPracticeSession, getPracticedSessions, getPracticedSession } from "../controllers/sessionController";
-import { getChallenges, getChallenge, createChallenge, updateChallenge } from "../controllers/problemsController";
+import { getChallenges, getChallenge, createChallenge, updateChallenge, createManyChallenges } from "../controllers/problemsController";
 import { Router } from "express";
 
 
@@ -11,6 +11,7 @@ export const router = Router();
 router.get("/challenges", getChallenges);
 router.get("/challenges/:id", getChallenge);
 router.post("/challenges", createChallenge);
+router.post("/challenges/batch", createManyChallenges);
 router.put("/challenges/:id", updateChallenge);
 
 
