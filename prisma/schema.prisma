@@ -52,11 +52,12 @@ model Challenge {
   title            String
   description      String
   difficulty       Difficulty
+  content          String?
   topicTags        Json
   similarQuestions Json
   sampleTestCase   Json
   allTestCases     Json
-  driverCode       String?           
+  driverCode       String          
   hints            Json
   created_at       DateTime          @default(now())
   updated_at       DateTime          @updatedAt

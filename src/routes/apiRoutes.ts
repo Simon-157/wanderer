@@ -1,8 +1,8 @@
-import { createPracticeSession, getPracticedSessions, getPracticedSession } from "../controllers/sessionController";
-import { getChallenges, getChallenge, createChallenge, updateChallenge, createManyChallenges } from "../controllers/problemsController";
+import { createPracticeSession, getPracticedSessions, getPracticedSession, deleteAllPracticeSessions } from "../controllers/sessionController";
+import { getChallenges, getChallenge, createChallenge, updateChallenge, createManyChallenges, deleteAllChallenges } from "../controllers/problemsController";
 import { Router } from "express";
 import { prisma } from "@/config/prisma";
-import { createSubmission } from "@/controllers/submissionController";
+import { createSubmissionOrRunTests } from "@/controllers/submissionController";
 
 
 
@@ -20,9 +20,11 @@ router.get("/challenges/:id", getChallenge);
 router.post("/challenges", createChallenge);
 router.post("/challenges/batch", createManyChallenges);
 router.put("/challenges/:id", updateChallenge);
+router.delete("/challenges", deleteAllChallenges);
 
 router.post("/session", createPracticeSession)
 router.get("/sessions", getPracticedSessions);
 router.get("/session/:userId/:practiceSessionId", getPracticedSession);
+router.delete("/sessions", deleteAllPracticeSessions);
 
-router.post("/submission", createSubmission)
+router.post("/submission", createSubmissionOrRunTests)

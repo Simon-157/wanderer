@@ -2,9 +2,9 @@ import { prisma } from "@/config/prisma";
 
 
 export const createChallenge = async (req: any, res: any) : Promise<void> => {
-    const { title, description, difficulty, topicTags, similarQuestions, sampleTestCase, hints } = req.body;
+    const { title, description, difficulty, topicTags, similarQuestions, sampleTestCase, hints, driverCode, allTestCases, content } = req.body;
 
-    if (!title || !description || !difficulty || !topicTags || !similarQuestions || !sampleTestCase || !hints) {
+    if (!title || !description || !difficulty || !topicTags || !similarQuestions || !sampleTestCase || !hints || !driverCode || !allTestCases || !content) {
         res.status(400).json({ message: "Missing required fields" });
         return;
     }
@@ -15,15 +15,28 @@ export const createChallenge = async (req: any, res: any) : Promise<void> => {
                 title,
                 description,
                 difficulty,
+                content,
                 topicTags,
                 similarQuestions,
                 sampleTestCase,
+                allTestCases,
+                driverCode,
                 hints
             }
         })
         res.status(201).json({ message: "Challenge created successfully", challenge });
     } catch (error) {
+        console.error(error);
         res.status(500).json({ message: "Failed to create challenge", error });
+    }
+}
+
+export const deleteAllChallenges = async (req: any, res: any) : Promise<void> => {
+    try {
+        const challenges = await prisma.challenge.deleteMany();
+        res.status(200).json({ message: "Challenges deleted successfully", challenges });
+    } catch (error) {
+        res.status(500).json({ message: "Failed to delete challenges", error });
     }
 }
 

@@ -1,0 +1,444 @@
+[
+  {
+    "title": "Reverse String",
+    "description": "Write a function that takes a string as input and returns the string reversed.",
+    "difficulty": "Easy",
+    "topicTags": ["Strings", "Algorithms"],
+    "similarQuestions": ["344. Reverse String", "541. Reverse String II"],
+    "sampleTestCase": {"input": "hello", "output": "olleh"},
+    "allTestCases": [
+      {"input": "hello", "output": "olleh"},
+      {"input": "world", "output": "dlrow"}
+    ],
+    "driverCode": "def reverse_string(s):\n    # write your code here\n\nif __name__ == '__main__':\n    # Reading input\n    s = input().strip()\n\n    # Calling function and printing output\n    result = reverse_string(s)\n    print(result)",
+    "hints": ["Think about slicing the string"],
+    "content": "<h1>Reverse String</h1><p><strong>Description:</strong> Write a function that takes a string as input and returns the string reversed.</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: hello<br>Output: olleh</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: world<br>Output: dlrow</code></pre><h2>Constraints:</h2><ul><li>The input string consists of printable ASCII characters.</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Two Sum",
+    "description": "Given an array of integers, return indices of the two numbers such that they add up to a specific target.",
+    "difficulty": "Medium",
+    "topicTags": ["Arrays", "Hash Tables"],
+    "similarQuestions": ["167. Two Sum II - Input array is sorted", "170. Two Sum III - Data structure design"],
+    "sampleTestCase": {"input": "[2,7,11,15]\n9", "output": "[0,1]"},
+    "allTestCases": [
+      {"input": "[2,7,11,15]\n9", "output": "[0,1]"},
+      {"input": "[-1,-2,-3,-4,-5]\n-8", "output": "[2,4]"}
+    ],
+    "driverCode": "def two_sum(nums, target):\n    # write your code here\n\nif __name__ == '__main__':\n    # Reading input\n    nums = list(map(int, input().strip().split(',')))\n    target = int(input().strip())\n\n    # Calling function and printing output\n    result = two_sum(nums, target)\n    print(result)",
+    "hints": ["Use a hash table to store the complement of each number"],
+    "content": "<h1>Two Sum</h1><p><strong>Description:</strong> Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: [2,7,11,15]\n9<br>Output: [0,1]</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: [-1,-2,-3,-4,-5]\n-8<br>Output: [2,4]</code></pre><h2>Constraints:</h2><ul><li>Each input would have exactly one solution.</li><li>You may not use the same element twice.</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Palindrome Number",
+    "description": "Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.",
+    "difficulty": "Easy",
+    "topicTags": ["Math"],
+    "similarQuestions": ["9. Palindrome Number II", "125. Valid Palindrome"],
+    "sampleTestCase": {"input": "121", "output": "true"},
+    "allTestCases": [
+      {"input": "121", "output": "true"},
+      {"input": "-121", "output": "false"}
+    ],
+    "driverCode": "def is_palindrome(x):\n    # write your code here\n\nif __name__ == '__main__':\n    # Reading input\n    x = int(input().strip())\n\n    # Calling function and printing output\n    result = is_palindrome(x)\n    print(result)",
+    "hints": ["Convert the integer to a string and compare with its reverse"],
+    "content": "<h1>Palindrome Number</h1><p><strong>Description:</strong> Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: 121<br>Output: true</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: -121<br>Output: false</code></pre><h2>Constraints:</h2><ul><li>Can a negative number be a palindrome? (Assume this to be true)</li><li>Must handle 32-bit signed integers.</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Valid Parentheses",
+    "description": "Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.",
+    "difficulty": "Easy",
+    "topicTags": ["Strings", "Stack"],
+    "similarQuestions": ["20. Valid Parentheses II", "1021. Remove Outermost Parentheses"],
+    "sampleTestCase": {"input": "()", "output": "true"},
+    "allTestCases": [
+      {"input": "()", "output": "true"},
+      {"input": "([)]", "output": "false"}
+    ],
+    "driverCode": "def is_valid(s):\n    # write your code here\n\nif __name__ == '__main__':\n    # Reading input\n    s = input().strip()\n\n    # Calling function and printing output\n    result = is_valid(s)\n    print(result)",
+    "hints": ["Use a stack to keep track of opening parentheses"],
+    "content": "<h1>Valid Parentheses</h1><p><strong>Description:</strong> Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: ()<br>Output: true</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: ([)]<br>Output: false</code></pre><h2>Constraints:</h2><ul><li>Ensure input string contains only these characters.</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Merge Two Sorted Lists",
+    "description": "Merge two sorted linked lists and return it as a new sorted list. The new list should be made by splicing together the nodes of the first two lists.",
+    "difficulty": "Easy",
+    "topicTags": ["Linked Lists"],
+    "similarQuestions": ["23. Merge k Sorted Lists", "148. Sort List"],
+    "sampleTestCase": {"input": "[1,2,4]\n[1,3,4]", "output": "[1,1,2,3,4,4]"},
+    "allTestCases": [
+      {"input": "[1,2,4]\n[1,3,4]", "output": "[1,1,2,3,4,4]"},
+      {"input": "[]\n[]", "output": "[]"}
+    ],
+    "driverCode": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef merge_two_lists(l1, l2):\n    # write your code here\n\nif __name__ == '__main__':\n    # Reading input\n    nums1 = list(map(int, input().strip().split(',')))\n    nums2 = list(map(int, input().strip().split(',')))\n    l1 = ListNode(nums1[0])\n    current = l1\n    for num in nums1[1:]:\n        current.next = ListNode(num)\n        current = current.next\n    l2 = ListNode(nums2[0])\n    current = l2\n    for num in nums2[1:]:\n        current.next = ListNode(num)\n        current = current.next\n\n    # Calling function and printing output\n    result = merge_two_lists(l1, l2)\n    output = []\n    while result:\n        output.append(result.val)\n        result = result.next\n    print(output)",
+    "hints": ["Use a dummy node to simplify the merging process"],
+    "content": "<h1>Merge Two Sorted Lists</h1><p><strong>Description:</strong> Merge two sorted linked lists and return it as a new sorted list. The new list should be made by splicing together the nodes of the first two lists.</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: [1,2,4]\n[1,3,4]<br>Output: [1,1,2,3,4,4]</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: []\n[]<br>Output: []</code></pre><h2>Constraints:</h2><ul><li>Both lists should be non-decreasing order.</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Maximum Subarray",
+    "description": "Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.",
+    "difficulty": "Medium",
+    "topicTags": ["Arrays", "Dynamic Programming"],
+    "similarQuestions": ["152. Maximum Product Subarray", "53. Maximum Subarray"],
+    "sampleTestCase": {"input": "[-2,1,-3,4,-1,2,1,-5,4]", "output": "6"},
+    "allTestCases": [
+      {"input": "[-2,1,-3,4,-1,2,1,-5,4]", "output": "6"},
+      {"input": "[1]", "output": "1"}
+    ],
+    "driverCode": "def max_sub_array(nums):\n    # write your code here\n\nif __name__ == '__main__':\n    # Reading input\n    nums = list(map(int, input().strip().split(',')))\n\n    # Calling function and printing output\n    result = max_sub_array(nums)\n    print(result)",
+    "hints": ["Consider using Kadane's algorithm"],
+    "content": "<h1>Maximum Subarray</h1><p><strong>Description:</strong> Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: [-2,1,-3,4,-1,2,1,-5,4]<br>Output: 6</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: [1]<br>Output: 1</code></pre><h2>Constraints:</h2><ul><li>The input array contains at least one number.</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Climbing Stairs",
+    "description": "You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?",
+    "difficulty": "Easy",
+    "topicTags": ["Dynamic Programming"],
+    "similarQuestions": ["70. Climbing Stairs II", "746. Min Cost Climbing Stairs"],
+    "sampleTestCase": {"input": "2", "output": "2"},
+    "allTestCases": [
+      {"input": "2", "output": "2"},
+      {"input": "3", "output": "3"}
+    ],
+    "driverCode": "def climb_stairs(n):\n    # write your code here\n\nif __name__ == '__main__':\n    # Reading input\n    n = int(input().strip())\n\n    # Calling function and printing output\n    result = climb_stairs(n)\n    print(result)",
+    "hints": ["Use dynamic programming to build up the solution from the base cases"],
+    "content": "<h1>Climbing Stairs</h1><p><strong>Description:</strong> You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: 2<br>Output: 2</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: 3<br>Output: 3</code></pre><h2>Constraints:</h2><ul><li>1 <= n <= 45</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Merge Intervals",
+    "description": "Given a collection of intervals, merge all overlapping intervals.",
+    "difficulty": "Medium",
+    "topicTags": ["Arrays", "Sorting"],
+    "similarQuestions": ["56. Merge Intervals II", "252. Meeting Rooms"],
+    "sampleTestCase": {"input": "[[1,3],[2,6],[8,10],[15,18]]", "output": "[[1,6],[8,10],[15,18]]"},
+    "allTestCases": [
+      {"input": "[[1,3],[2,6],[8,10],[15,18]]", "output": "[[1,6],[8,10],[15,18]]"},
+      {"input": "[[1,4],[4,5]]", "output": "[[1,5]]"}
+    ],
+    "driverCode": "def merge_intervals(intervals):\n    # write your code here\n\nif __name__ == '__main__':\n    # Reading input\n    import ast\n    intervals = ast.literal_eval(input().strip())\n\n    # Calling function and printing output\n    result = merge_intervals(intervals)\n    print(result)",
+    "hints": ["Sort the intervals by their starting points"],
+    "content": "<h1>Merge Intervals</h1><p><strong>Description:</strong> Given a collection of intervals, merge all overlapping intervals.</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: [[1,3],[2,6],[8,10],[15,18]]<br>Output: [[1,6],[8,10],[15,18]]</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: [[1,4],[4,5]]<br>Output: [[1,5]]</code></pre><h2>Constraints:</h2><ul><li>The intervals will be sorted by their start times.</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Longest Substring Without Repeating Characters",
+    "description": "Given a string, find the length of the longest substring without repeating characters.",
+    "difficulty": "Medium",
+    "topicTags": ["Strings", "Sliding Window"],
+    "similarQuestions": ["3. Longest Substring Without Repeating Characters II", "159. Longest Substring with At Most Two Distinct Characters"],
+    "sampleTestCase": {"input": "abcabcbb", "output": "3"},
+    "allTestCases": [
+      {"input": "abcabcbb", "output": "3"},
+      {"input": "bbbbb", "output": "1"}
+    ],
+    "driverCode": "def length_of_longest_substring(s):\n    # write your code here\n\nif __name__ == '__main__':\n    # Reading input\n    s = input().strip()\n\n    # Calling function and printing output\n    result = length_of_longest_substring(s)\n    print(result)",
+    "hints": ["Use a sliding window approach with two pointers"],
+    "content": "<h1>Longest Substring Without Repeating Characters</h1><p><strong>Description:</strong> Given a string, find the length of the longest substring without repeating characters.</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: abcabcbb<br>Output: 3</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: bbbbb<br>Output: 1</code></pre><h2>Constraints:</h2><ul><li>The input string can contain any printable ASCII character.</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Container With Most Water",
+    "description": "Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find two lines, which, together with the x-axis forms a container, such that the container contains the most water.",
+    "difficulty": "Medium",
+    "topicTags": ["Arrays", "Two Pointers"],
+    "similarQuestions": ["11. Container With Most Water II", "42. Trapping Rain Water"],
+    "sampleTestCase": {"input": "[1,8,6,2,5,4,8,3,7]", "output": "49"},
+    "allTestCases": [
+      {"input": "[1,8,6,2,5,4,8,3,7]", "output": "49"},
+      {"input": "[1,1]", "output": "1"}
+    ],
+    "driverCode": "def max_area(height):\n    # write your code here\n\nif __name__ == '__main__':\n    # Reading input\n    height = list(map(int, input().strip().split(',')))\n\n    # Calling function and printing output\n    result = max_area(height)\n    print(result)",
+    "hints": ["Use two pointers to traverse from both ends towards the center"],
+    "content": "<h1>Container With Most Water</h1><p><strong>Description:</strong> Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find two lines, which, together with the x-axis forms a container, such that the container contains the most water.</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: [1,8,6,2,5,4,8,3,7]<br>Output: 49</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: [1,1]<br>Output: 1</code></pre><h2>Constraints:</h2><ul><li>1 <= n <= 10^5</li><li>0 <= ai <= 10^4</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Remove Nth Node From End of List",
+    "description": "Given the head of a linked list, remove the nth node from the end of the list and return its head.",
+    "difficulty": "Medium",
+    "topicTags": ["Linked Lists", "Two Pointers"],
+    "similarQuestions": ["19. Remove Nth Node From End of List II", "24. Swap Nodes in Pairs"],
+    "sampleTestCase": {"input": "[1,2,3,4,5]\n2", "output": "[1,2,3,5]"},
+    "allTestCases": [
+      {"input": "[1,2,3,4,5]\n2", "output": "[1,2,3,5]"},
+      {"input": "[1]\n1", "output": "[]"}
+    ],
+    "driverCode": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef remove_nth_from_end(head, n):\n    # write your code here\n\nif __name__ == '__main__':\n    # Reading input\n    nums = list(map(int, input().strip().split(',')))\n    n = int(input().strip())\n    head = ListNode(nums[0])\n    current = head\n    for num in nums[1:]:\n        current.next = ListNode(num)\n        current = current.next\n\n    # Calling function and printing output\n    result = remove_nth_from_end(head, n)\n    output = []\n    while result:\n        output.append(result.val)\n        result = result.next\n    print(output)",
+    "hints": ["Use two pointers to find the nth node from the end in one pass"],
+    "content": "<h1>Remove Nth Node From End of List</h1><p><strong>Description:</strong> Given the head of a linked list, remove the nth node from the end of the list and return its head.</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: [1,2,3,4,5]\n2<br>Output: [1,2,3,5]</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: [1]\n1<br>Output: []</code></pre><h2>Constraints:</h2><ul><li>The linked list is non-empty and contains at least one node.</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Search in Rotated Sorted Array",
+    "description": "You are given an integer array nums sorted in ascending order (with distinct values), and an integer target. Suppose that nums is rotated at some pivot unknown to you beforehand (i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]). If target is found in the array, return its index, otherwise, return -1.",
+    "difficulty": "Medium",
+    "topicTags": ["Arrays", "Binary Search"],
+    "similarQuestions": ["33. Search in Rotated Sorted Array II", "81. Search in Rotated Sorted Array II"],
+    "sampleTestCase": {"input": "[4,5,6,7,0,1,2]\n0", "output": "4"},
+    "allTestCases": [
+      {"input": "[4,5,6,7,0,1,2]\n0", "output": "4"},
+      {"input": "[4,5,6,7,0,1,2]\n3", "output": "-1"}
+    ],
+    "driverCode": "def search(nums, target):\n    # write your code here\n\nif __name__ == '__main__':\n    # Reading input\n    nums = list(map(int, input().strip().split(',')))\n    target = int(input().strip())\n\n    # Calling function and printing output\n    result = search(nums, target)\n    print(result)",
+    "hints": ["Binary search can be adapted to find the pivot point and the target"],
+    "content": "<h1>Search in Rotated Sorted Array</h1><p><strong>Description:</strong> You are given an integer array nums sorted in ascending order (with distinct values), and an integer target. Suppose that nums is rotated at some pivot unknown to you beforehand (i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]). If target is found in the array, return its index, otherwise, return -1.</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: [4,5,6,7,0,1,2]\n0<br>Output: 4</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: [4,5,6,7,0,1,2]\n3<br>Output: -1</code></pre><h2>Constraints:</h2><ul><li>1 <= nums.length <= 5000</li><li>-10^4 <= nums[i] <= 10^4</li><li>All values of nums are distinct.</li><li>nums is guaranteed to be rotated at some pivot.</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Combination Sum",
+    "description": "Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.",
+    "difficulty": "Medium",
+    "topicTags": ["Backtracking"],
+    "similarQuestions": ["39. Combination Sum II", "216. Combination Sum III"],
+    "sampleTestCase": {"input": "[2,3,6,7]\n7", "output": "[[2,2,3],[7]]"},
+    "allTestCases": [
+      {"input": "[2,3,6,7]\n7", "output": "[[2,2,3],[7]]"},
+      {"input": "[2,3,5]\n8", "output": "[[2,2,2,2],[2,3,3],[3,5]]"}
+    ],
+    "driverCode": "def combination_sum(candidates, target):\n    # write your code here\n\nif __name__ == '__main__':\n    # Reading input\n    import ast\n    candidates = ast.literal_eval(input().strip())\n    target = int(input().strip())\n\n    # Calling function and printing output\n    result = combination_sum(candidates, target)\n    print(result)",
+    "hints": ["Use backtracking to explore all potential combinations"],
+    "content": "<h1>Combination Sum</h1><p><strong>Description:</strong> Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: [2,3,6,7]\n7<br>Output: [[2,2,3],[7]]</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: [2,3,5]\n8<br>Output: [[2,2,2,2],[2,3,3],[3,5]]</code></pre><h2>Constraints:</h2><ul><li>1 <= candidates.length <= 30</li><li>2 <= candidates[i] <= 40</li><li>All elements of candidates are distinct.</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Find First and Last Position of Element in Sorted Array",
+    "description": "Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.",
+    "difficulty": "Medium",
+    "topicTags": ["Arrays", "Binary Search"],
+    "similarQuestions": ["34. Find First and Last Position of Element in Sorted Array II", "852. Peak Index in a Mountain Array"],
+    "sampleTestCase": {"input": "[5,7,7,8,8,10]\n8", "output": "[3,4]"},
+    "allTestCases": [
+      {"input": "[5,7,7,8,8,10]\n8", "output": "[3,4]"},
+      {"input": "[5,7,7,8,8,10]\n6", "output": "[-1,-1]"}
+    ],
+    "driverCode": "def search_range(nums, target):\n    # write your code here\n\nif __name__ == '__main__':\n    # Reading input\n    nums = list(map(int, input().strip().split(',')))\n    target = int(input().strip())\n\n    # Calling function and printing output\n    result = search_range(nums, target)\n    print(result)",
+    "hints": ["Use binary search to find the leftmost and rightmost positions"],
+    "content": "<h1>Find First and Last Position of Element in Sorted Array</h1><p><strong>Description:</strong> Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: [5,7,7,8,8,10]\n8<br>Output: [3,4]</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: [5,7,7,8,8,10]\n6<br>Output: [-1,-1]</code></pre><h2>Constraints:</h2><ul><li>1 <= nums.length <= 10^5</li><li>-10^9 <= nums[i] <= 10^9</li><li>nums is sorted in non-decreasing order.</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Merge Intervals",
+    "description": "Given a collection of intervals, merge all overlapping intervals.",
+    "difficulty": "Medium",
+    "topicTags": ["Arrays", "Sorting"],
+    "similarQuestions": ["56. Merge Intervals II", "57. Insert Interval"],
+    "sampleTestCase": {"input": "[[1,3],[2,6],[8,10],[15,18]]", "output": "[[1,6],[8,10],[15,18]]"},
+    "allTestCases": [
+      {"input": "[[1,3],[2,6],[8,10],[15,18]]", "output": "[[1,6],[8,10],[15,18]]"},
+      {"input": "[[1,4],[4,5]]", "output": "[[1,5]]"},
+      {"input": "[[1,4],[0,4]]", "output": "[[0,4]]"},
+      {"input": "[[1,4],[2,3]]", "output": "[[1,4]]"},
+      {"input": "[[1,10],[2,6],[8,10],[15,18]]", "output": "[[1,10],[15,18]]"}
+    ],
+    "driverCode": "def merge(intervals):\n    # write your code here\n\nif __name__ == '__main__':\n    import ast\n    intervals = ast.literal_eval(input().strip())\n\n    result = merge(intervals)\n    print(result)",
+    "hints": ["Sort the intervals by their start time and then merge them if they overlap"],
+    "content": "<h1>Merge Intervals</h1><p><strong>Description:</strong> Given a collection of intervals, merge all overlapping intervals.</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: [[1,3],[2,6],[8,10],[15,18]]<br>Output: [[1,6],[8,10],[15,18]]</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: [[1,4],[4,5]]<br>Output: [[1,5]]</code></pre><h2>Constraints:</h2><ul><li>1 <= intervals.length <= 10^4</li><li>intervals[i].length == 2</li><li>0 <= intervals[i][0] <= intervals[i][1] <= 10^4</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Group Anagrams",
+    "description": "Given an array of strings strs, group the anagrams together. You can return the answer in any order.",
+    "difficulty": "Medium",
+    "topicTags": ["Hash Table", "String"],
+    "similarQuestions": ["49. Group Anagrams II", "242. Valid Anagram"],
+    "sampleTestCase": {"input": "[\"eat\",\"tea\",\"tan\",\"ate\",\"nat\",\"bat\"]", "output": "[[\"bat\"],[\"nat\",\"tan\"],[\"ate\",\"eat\",\"tea\"]]"},
+    "allTestCases": [
+      {"input": "[\"eat\",\"tea\",\"tan\",\"ate\",\"nat\",\"bat\"]", "output": "[[\"bat\"],[\"nat\",\"tan\"],[\"ate\",\"eat\",\"tea\"]]"},
+      {"input": "[\"\"]", "output": "[[\"\"]]"},
+      {"input": "[\"a\"]", "output": "[[\"a\"]]"},
+      {"input": "[\"ac\",\"ca\",\"abc\",\"bca\",\"cab\"]", "output": "[[\"ac\",\"ca\"],[\"abc\",\"bca\",\"cab\"]]"},
+      {"input": "[\"ab\",\"ba\",\"abc\",\"bca\",\"cab\"]", "output": "[[\"ab\",\"ba\"],[\"abc\",\"bca\",\"cab\"]]"}
+    ],
+    "driverCode": "def group_anagrams(strs):\n    # write your code here\n\nif __name__ == '__main__':\n    import ast\n    strs = ast.literal_eval(input().strip())\n\n    result = group_anagrams(strs)\n    print(result)",
+    "hints": ["Use a hash table to map sorted strings to all of their anagrams"],
+    "content": "<h1>Group Anagrams</h1><p><strong>Description:</strong> Given an array of strings strs, group the anagrams together. You can return the answer in any order.</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: [\"eat\",\"tea\",\"tan\",\"ate\",\"nat\",\"bat\"]<br>Output: [[\"bat\"],[\"nat\",\"tan\"],[\"ate\",\"eat\",\"tea\"]]</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: [\"\"]<br>Output: [[\"\"]]</code></pre><h2>Constraints:</h2><ul><li>1 <= strs.length <= 10^4</li><li>0 <= strs[i].length <= 100</li><li>strs[i] consists of lower-case English letters.</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Longest Common Prefix",
+    "description": "Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string \"\".",
+    "difficulty": "Easy",
+    "topicTags": ["String"],
+    "similarQuestions": ["14. Longest Common Prefix II", "720. Longest Word in Dictionary"],
+    "sampleTestCase": {"input": "[\"flower\",\"flow\",\"flight\"]", "output": "\"fl\""},
+    "allTestCases": [
+      {"input": "[\"flower\",\"flow\",\"flight\"]", "output": "\"fl\""},
+      {"input": "[\"dog\",\"racecar\",\"car\"]", "output": "\"\""},
+      {"input": "[\"interspecies\",\"interstellar\",\"interstate\"]", "output": "\"inters\""},
+      {"input": "[\"throne\",\"dungeon\"]", "output": "\"\""},
+      {"input": "[\"throne\",\"throne\"]", "output": "\"throne\""}
+    ],
+    "driverCode": "def longest_common_prefix(strs):\n    # write your code here\n\nif __name__ == '__main__':\n    import ast\n    strs = ast.literal_eval(input().strip())\n\n    result = longest_common_prefix(strs)\n    print(result)",
+    "hints": ["Use vertical scanning, compare characters one by one"],
+    "content": "<h1>Longest Common Prefix</h1><p><strong>Description:</strong> Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string \"\".</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: [\"flower\",\"flow\",\"flight\"]<br>Output: \"fl\"</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: [\"dog\",\"racecar\",\"car\"]<br>Output: \"\"</code></pre><h2>Constraints:</h2><ul><li>1 <= strs.length <= 200</li><li>0 <= strs[i].length <= 200</li><li>strs[i] consists of only lower-case English letters.</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Word Search",
+    "description": "Given an m x n grid of characters board and a string word, return true if word exists in the grid. The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.",
+    "difficulty": "Medium",
+    "topicTags": ["Backtracking"],
+    "similarQuestions": ["79. Word Search II", "212. Word Search II"],
+    "sampleTestCase": {"input": "[['A','B','C','E'],['S','F','C','S'],['A','D','E','E']]\n'ABCCED'", "output": "true"},
+    "allTestCases": [
+      {"input": "[['A','B','C','E'],['S','F','C','S'],['A','D','E','E']]\n'ABCCED'", "output": "true"},
+      {"input": "[['A','B','C','E'],['S','F','C','S'],['A','D','E','E']]\n'SEE'", "output": "true"},
+      {"input": "[['A','B','C','E'],['S','F','C','S'],['A','D','E','E']]\n'ABCB'", "output": "false"},
+      {"input": "[['A']]\n'A'", "output": "true"},
+      {"input": "[['A','B'],['C','D']]\n'ABCD'", "output": "false"}
+    ],
+    "driverCode": "def exist(board, word):\n    # write your code here\n\nif __name__ == '__main__':\n    import ast\n    board = ast.literal_eval(input().strip())\n    word = input().strip()\n\n    result = exist(board, word)\n    print(result)",
+    "hints": ["Use backtracking to explore all possible paths in the grid"],
+    "content": "<h1>Word Search</h1><p><strong>Description:</strong> Given an m x n grid of characters board and a string word, return true if word exists in the grid. The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: [['A','B','C','E'],['S','F','C','S'],['A','D','E','E']]\n'ABCCED'<br>Output: true</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: [['A','B','C','E'],['S','F','C','S'],['A','D','E','E']]\n'SEE'<br>Output: true</code></pre><h2>Constraints:</h2><ul><li>m == board.length</li><li>n == board[i].length</li><li>1 <= m, n <= 200</li><li>1 <= word.length <= 10^3</li><li>board and word consists only of lowercase and uppercase English letters.</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Reverse Linked List",
+    "description": "Given the head of a singly linked list, reverse the list, and return the reversed list.",
+    "difficulty": "Easy",
+    "topicTags": ["Linked List"],
+    "similarQuestions": ["92. Reverse Linked List II", "206. Reverse Linked List III"],
+    "sampleTestCase": {"input": "[1,2,3,4,5]", "output": "[5,4,3,2,1]"},
+    "allTestCases": [
+      {"input": "[1,2,3,4,5]", "output": "[5,4,3,2,1]"},
+      {"input": "[1,2]", "output": "[2,1]"},
+      {"input": "[]", "output": "[]"},
+      {"input": "[1]", "output": "[1]"},
+      {"input": "[1,2,3]", "output": "[3,2,1]"}
+    ],
+    "driverCode": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef reverse_list(head):\n    # write your code here\n\nif __name__ == '__main__':\n    import ast\n    head = ast.literal_eval(input().strip())\n\n    result = reverse_list(head)\n    print(result)",
+    "hints": ["Iteratively reverse the links or use recursion"],
+    "content": "<h1>Reverse Linked List</h1><p><strong>Description:</strong> Given the head of a singly linked list, reverse the list, and return the reversed list.</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: [1,2,3,4,5]<br>Output: [5,4,3,2,1]</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: [1,2]<br>Output: [2,1]</code></pre><h2>Constraints:</h2><ul><li>The number of nodes in the list is the range [0, 5000].</li><li>-5000 <= Node.val <= 5000</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+
+  {
+    "title": "Longest Common Prefix",
+    "description": "Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string \"\".",
+    "difficulty": "Easy",
+    "topicTags": ["String"],
+    "similarQuestions": ["14. Longest Common Prefix II"],
+    "sampleTestCase": {"input": "[\"flower\",\"flow\",\"flight\"]", "output": "\"fl\""},
+    "allTestCases": [
+      {"input": "[\"flower\",\"flow\",\"flight\"]", "output": "\"fl\""},
+      {"input": "[\"dog\",\"racecar\",\"car\"]", "output": "\"\""},
+      {"input": "[\"interview\",\"interact\",\"intermediate\"]", "output": "\"inter\""},
+      {"input": "[\"\",\"b\",\"c\"]", "output": "\"\""},
+      {"input": "[\"a\"]", "output": "\"a\""}
+    ],
+    "driverCode": "def longest_common_prefix(strs):\n    # write your code here\n\nif __name__ == '__main__':\n    import ast\n    strs = ast.literal_eval(input().strip())\n\n    result = longest_common_prefix(strs)\n    print(result)",
+    "hints": ["Compare characters of each string one by one"],
+    "content": "<h1>Longest Common Prefix</h1><p><strong>Description:</strong> Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string \"\".</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: [\"flower\",\"flow\",\"flight\"]<br>Output: \"fl\"</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: [\"dog\",\"racecar\",\"car\"]<br>Output: \"\"</code></pre><h2>Constraints:</h2><ul><li>1 <= strs.length <= 200</li><li>0 <= strs[i].length <= 200</li><li>strs[i] consists of only lower-case English letters.</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Valid Palindrome",
+    "description": "Given a string s, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.",
+    "difficulty": "Easy",
+    "topicTags": ["String", "Two Pointers"],
+    "similarQuestions": ["680. Valid Palindrome II"],
+    "sampleTestCase": {"input": "\"A man, a plan, a canal: Panama\"", "output": "true"},
+    "allTestCases": [
+      {"input": "\"A man, a plan, a canal: Panama\"", "output": "true"},
+      {"input": "\"race a car\"", "output": "false"},
+      {"input": "\" \"", "output": "true"},
+      {"input": "\"0P\"", "output": "false"},
+      {"input": "\"ab_a\"", "output": "true"}
+    ],
+    "driverCode": "def is_palindrome(s):\n    # write your code here\n\nif __name__ == '__main__':\n    s = input().strip()\n\n    result = is_palindrome(s)\n    print(result)",
+    "hints": ["Use two pointers to compare characters from both ends of the string"],
+    "content": "<h1>Valid Palindrome</h1><p><strong>Description:</strong> Given a string s, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: \"A man, a plan, a canal: Panama\"<br>Output: true</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: \"race a car\"<br>Output: false</code></pre><h2>Constraints:</h2><ul><li>1 <= s.length <= 2 * 10^5</li><li>s consists only of printable ASCII characters.</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Implement strStr()",
+    "description": "Implement strStr(). Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.",
+    "difficulty": "Easy",
+    "topicTags": ["String", "Two Pointers"],
+    "similarQuestions": ["28. Implement strStr() II", "214. Shortest Palindrome"],
+    "sampleTestCase": {"input": "\"hello\"\n\"ll\"", "output": "2"},
+    "allTestCases": [
+      {"input": "\"hello\"\n\"ll\"", "output": "2"},
+      {"input": "\"aaaaa\"\n\"bba\"", "output": "-1"},
+      {"input": "\"\"\n\"\"", "output": "0"},
+      {"input": "\"a\"\n\"a\"", "output": "0"},
+      {"input": "\"mississippi\"\n\"issip\"", "output": "4"}
+    ],
+    "driverCode": "def str_str(haystack, needle):\n    # write your code here\n\nif __name__ == '__main__':\n    haystack = input().strip()\n    needle = input().strip()\n\n    result = str_str(haystack, needle)\n    print(result)",
+    "hints": ["Use the built-in function find() for simplicity"],
+    "content": "<h1>Implement strStr()</h1><p><strong>Description:</strong> Implement strStr(). Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: \"hello\"\n\"ll\"<br>Output: 2</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: \"aaaaa\"\n\"bba\"<br>Output: -1</code></pre><h2>Constraints:</h2><ul><li>0 <= haystack.length, needle.length <= 5 * 10^4</li><li>haystack and needle consist of only lower-case English characters.</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Count and Say",
+    "description": "The count-and-say sequence is a sequence of digit strings defined by the recursive formula: countAndSay(1) = \"1\", countAndSay(n) is the way you would \"say\" the digit string from countAndSay(n-1), which is then converted into a different digit string.",
+    "difficulty": "Easy",
+    "topicTags": ["String"],
+    "similarQuestions": ["38. Count and Say II"],
+    "sampleTestCase": {"input": "1", "output": "\"1\""},
+    "allTestCases": [
+      {"input": "1", "output": "\"1\""},
+      {"input": "4", "output": "\"1211\""},
+      {"input": "5", "output": "\"111221\""},
+      {"input": "6", "output": "\"312211\""},
+      {"input": "7", "output": "\"13112221\""}
+    ],
+    "driverCode": "def count_and_say(n):\n    # write your code here\n\nif __name__ == '__main__':\n    n = int(input().strip())\n\n    result = count_and_say(n)\n    print(result)",
+    "hints": ["Generate the sequence iteratively"],
+    "content": "<h1>Count and Say</h1><p><strong>Description:</strong> The count-and-say sequence is a sequence of digit strings defined by the recursive formula: countAndSay(1) = \"1\", countAndSay(n) is the way you would \"say\" the digit string from countAndSay(n-1), which is then converted into a different digit string.</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: 1<br>Output: \"1\"</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: 4<br>Output: \"1211\"</code></pre><h2>Constraints:</h2><ul><li>1 <= n <= 30</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  },
+  {
+    "title": "Add Binary",
+    "description": "Given two binary strings a and b, return their sum as a binary string.",
+    "difficulty": "Easy",
+    "topicTags": ["String", "Math"],
+    "similarQuestions": ["67. Add Binary II", "415. Add Strings"],
+    "sampleTestCase": {"input": "\"11\"\n\"1\"", "output": "\"100\""},
+    "allTestCases": [
+      {"input": "\"11\"\n\"1\"", "output": "\"100\""},
+      {"input": "\"1010\"\n\"1011\"", "output": "\"10101\""},
+      {"input": "\"0\"\n\"0\"", "output": "\"0\""},
+      {"input": "\"1111\"\n\"1111\"", "output": "\"11110\""},
+      {"input": "\"1\"\n\"111\"", "output": "\"1000\""}
+    ],
+    "driverCode": "def add_binary(a, b):\n    # write your code here\n\nif __name__ == '__main__':\n    a = input().strip()\n    b = input().strip()\n\n    result = add_binary(a, b)\n    print(result)",
+    "hints": ["Simulate the addition process"],
+    "content": "<h1>Add Binary</h1><p><strong>Description:</strong> Given two binary strings a and b, return their sum as a binary string.</p><h2>Examples:</h2><p><strong>Example 1:</strong></p><pre><code>Input: \"11\"\n\"1\"<br>Output: \"100\"</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: \"1010\"\n\"1011\"<br>Output: \"10101\"</code></pre><h2>Constraints:</h2><ul><li>1 <= a.length, b.length <= 10^4</li><li>a and b consist only of '0' or '1' characters.</li><li>Each string does not contain leading zeros except for '0' itself.</li></ul>",
+    "created_at": "2024-05-27T09:00:00Z",
+    "updated_at": "2024-05-27T09:00:00Z"
+  }
+]
+
+
+

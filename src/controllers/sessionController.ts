@@ -59,3 +59,15 @@ export const getPracticedSession = async (req: any, res: any) : Promise<void> =>
         res.status(500).json({ message: "Failed to fetch practice session", error });
     }
 }
+
+
+// delete all practice session 
+
+export const deleteAllPracticeSessions = async (req: any, res: any) : Promise<void> => {
+    try {
+        const practiceSessions = await prisma.practiceSession.deleteMany();
+        res.status(200).json({ message: "Practice sessions deleted successfully", practiceSessions });
+    } catch (error) {
+        res.status(500).json({ message: "Failed to delete practice sessions", error });
+    }
+}
