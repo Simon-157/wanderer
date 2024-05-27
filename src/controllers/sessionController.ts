@@ -1,17 +1,22 @@
 import { prisma } from "@/config/prisma";
+import { randomUUID } from "crypto";
 
 export const createPracticeSession = async (req: any, res: any) : Promise<void> => {
 
     const { userId, challengeId } = req.body;
+    const sessionId = randomUUID();
 
     if (!userId || !challengeId) {
         res.status(400).json({ message: "Missing required fields" });
         return;
     }
 
+    // TODO: check if user has already practiced this challenge
+
     try {
         const practiceSession = await prisma.practiceSession.create({
             data: {
+                sessionId,
                 userId,
                 challengeId
             }
