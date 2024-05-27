@@ -142,7 +142,7 @@ const submitCode = async (
             },
             {
                 headers: {
-                    "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
+                    "x-rapidapi-host": `${process.env.RAPID_API_HOST}`,
                     "x-rapidapi-key": process.env.RAPID_API_KEY,
                 },
             }
@@ -155,7 +155,7 @@ const submitCode = async (
                 `${process.env.RAPID_API_URL}/submissions/${submissionId}`,
                 {
                     headers: {
-                        "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
+                        "x-rapidapi-host": `${process.env.RAPID_API_HOST}`,
                         "x-rapidapi-key": process.env.RAPID_API_KEY,
                     },
                 }
@@ -185,7 +185,7 @@ const submitBatch = async (code: string, languageId: number, testCases: TestCase
         }));
 
         const response = await axios.post(
-            `https://judge0-ce.p.rapidapi.com/submissions/batch`,
+            `${process.env.RAPID_API_URL}/submissions/batch`,
             { submissions }
         );
 
@@ -195,10 +195,10 @@ const submitBatch = async (code: string, languageId: number, testCases: TestCase
             const submissions = await Promise.all(
                 submissionIds.map(async (submissionId: string) => {
                     const submission = await axios.get(
-                        `https://judge0-ce.p.rapidapi.com/submissions/${submissionId}`,
+                        `${process.env.RAPID_API_URL}/submissions/${submissionId}`,
                         {
                             headers: {
-                                "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
+                                "x-rapidapi-host": `${process.env.RAPID_API_HOST}`,
                                 "x-rapidapi-key": process.env.RAPID_API_KEY,
                             },
                         }
