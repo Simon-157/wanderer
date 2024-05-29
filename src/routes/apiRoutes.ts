@@ -16,7 +16,7 @@ router.get("/allusers", async (req: any, res: any) => {
 });
 
 router.get("/challenges", getChallenges);
-router.get("/challenges/:id", getChallenge);
+router.get("/challenge/:id", getChallenge);
 router.post("/challenges", createChallenge);
 router.post("/challenges/batch", createManyChallenges);
 router.put("/challenges/:id", updateChallenge);

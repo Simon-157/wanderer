@@ -53,6 +53,8 @@ model Challenge {
   description      String
   difficulty       Difficulty
   content          String?
+  constraints      String?
+  assumptions      String[]
   topicTags        Json
   similarQuestions Json
   sampleTestCase   Json

@@ -1,0 +1,387 @@
+[
+  {
+    "title": "Reverse a String",
+    "description": "<p>Write a function to reverse a given string. The input string is provided as a single word without spaces.</p>",
+    "difficulty": "Easy",
+    "assumptions": ["The input will always be a valid string.", "The string will not contain any spaces."],
+    "constraints": "<ul><li>The length of the string is between <b>1</b> and <b>1000</b>.</li></ul>",
+    "content": "This problem tests your ability to manipulate strings in Python.",
+    "topicTags": ["String Manipulation"],
+    "similarQuestions": ["Palindrome Check", "String Rotation"],
+    "sampleTestCase": [
+      {
+        "input": "hello",
+        "output": "olleh",
+        "explanation": "The reverse of 'hello' is 'olleh'."
+      },
+      {
+        "input": "world",
+        "output": "dlrow",
+        "explanation": "The reverse of 'world' is 'dlrow'."
+      }
+    ],
+    "allTestCases": [
+      {
+        "input": "algorithm",
+        "output": "mhtirogla",
+        "explanation": "The reverse of 'algorithm' is 'mhtirogla'."
+      },
+      {
+        "input": "data",
+        "output": "atad",
+        "explanation": "The reverse of 'data' is 'atad'."
+      },
+      {
+        "input": "python",
+        "output": "nohtyp",
+        "explanation": "The reverse of 'python' is 'nohtyp'."
+      },
+      {
+        "input": "string",
+        "output": "gnirts",
+        "explanation": "The reverse of 'string' is 'gnirts'."
+      },
+      {
+        "input": "challenge",
+        "output": "egnellahc",
+        "explanation": "The reverse of 'challenge' is 'egnellahc'."
+      },
+      {
+        "input": "test",
+        "output": "tset",
+        "explanation": "The reverse of 'test' is 'tset'."
+      },
+      {
+        "input": "reverse",
+        "output": "esrever",
+        "explanation": "The reverse of 'reverse' is 'esrever'."
+      },
+      {
+        "input": "example",
+        "output": "elpmaxe",
+        "explanation": "The reverse of 'example' is 'elpmaxe'."
+      },
+      {
+        "input": "input",
+        "output": "tupni",
+        "explanation": "The reverse of 'input' is 'tupni'."
+      },
+      {
+        "input": "output",
+        "output": "tupuo",
+        "explanation": "The reverse of 'output' is 'tupuo'."
+      }
+    ],
+    "driverCode": "def reverse_string(s: str) -> str:\n    # Write your code here\n    return s[::-1]\n\nif __name__ == \"__main__\":\n    import sys\n    input_string = sys.stdin.read().strip()\n    print(reverse_string(input_string))",
+    "hints": ["You can use Python's slicing feature to reverse the string in one line."],
+    "created_at": "2024-05-28T12:00:00Z",
+    "updated_at": "2024-05-28T12:00:00Z"
+  },
+  {
+    "title": "Check Palindrome",
+    "description": "<p>Write a function to check if a given string is a palindrome. A palindrome reads the same backward as forward.</p>",
+    "difficulty": "Easy",
+    "assumptions": ["The input will always be a valid string."],
+    "constraints": "<ul><li>The length of the string is between <b>1</b> and <b>1000</b>.</li></ul>",
+    "content": "This problem tests your ability to check for palindromes in Python.",
+    "topicTags": ["String Manipulation"],
+    "similarQuestions": ["Reverse a String", "String Rotation"],
+    "sampleTestCase": [
+      {
+        "input": "racecar",
+        "output": "True",
+        "explanation": "The string 'racecar' reads the same forward and backward."
+      },
+      {
+        "input": "hello",
+        "output": "False",
+        "explanation": "The string 'hello' does not read the same forward and backward."
+      }
+    ],
+    "allTestCases": [
+      {
+        "input": "madam",
+        "output": "True",
+        "explanation": "The string 'madam' reads the same forward and backward."
+      },
+      {
+        "input": "step on no pets",
+        "output": "False",
+        "explanation": "The string 'step on no pets' with spaces is not a palindrome."
+      },
+      {
+        "input": "noon",
+        "output": "True",
+        "explanation": "The string 'noon' reads the same forward and backward."
+      },
+      {
+        "input": "civic",
+        "output": "True",
+        "explanation": "The string 'civic' reads the same forward and backward."
+      },
+      {
+        "input": "level",
+        "output": "True",
+        "explanation": "The string 'level' reads the same forward and backward."
+      },
+      {
+        "input": "rotor",
+        "output": "True",
+        "explanation": "The string 'rotor' reads the same forward and backward."
+      },
+      {
+        "input": "hello world",
+        "output": "False",
+        "explanation": "The string 'hello world' does not read the same forward and backward."
+      },
+      {
+        "input": "radar",
+        "output": "True",
+        "explanation": "The string 'radar' reads the same forward and backward."
+      },
+      {
+        "input": "python",
+        "output": "False",
+        "explanation": "The string 'python' does not read the same forward and backward."
+      },
+      {
+        "input": "abcba",
+        "output": "True",
+        "explanation": "The string 'abcba' reads the same forward and backward."
+      }
+    ],
+    "driverCode": "def is_palindrome(s: str) -> bool:\n    # Write your code here\n    return s == s[::-1]\n\nif __name__ == \"__main__\":\n    import sys\n    input_string = sys.stdin.read().strip()\n    print(is_palindrome(input_string))",
+    "hints": ["You can use Python's slicing feature to reverse the string and compare it with the original string."],
+    "created_at": "2024-05-28T12:00:00Z",
+    "updated_at": "2024-05-28T12:00:00Z"
+  },
+    {
+        "title": "Longest Substring Without Repeating Characters",
+        "description": "<p>Write a function to find the length of the <b>longest substring</b> without repeating characters in a given string.</p>",
+        "difficulty": "Medium",
+        "assumptions": ["The input string will only contain ASCII characters."],
+        "constraints": "<ul><li><b>Time Complexity:</b> The solution should run in <code>O(n)</code> time, where <code>n</code> is the length of the string.</li><li><b>Space Complexity:</b> The solution should use <code>O(min(n, m))</code> space, where <code>m</code> is the size of the character set.</li></ul>",
+        "content": "Strings, Sliding Window, Hash Table",
+        "topicTags": ["String", "Hash Table", "Sliding Window"],
+        "similarQuestions": ["Substring with Concatenation of All Words", "Longest Substring with At Most Two Distinct Characters"],
+        "sampleTestCase": [
+            {"input": "abcabcbb", "output": "3", "explanation": "The answer is 'abc', with the length of 3."},
+            {"input": "bbbbb", "output": "1", "explanation": "The answer is 'b', with the length of 1."},
+            {"input": "pwwkew", "output": "3", "explanation": "The answer is 'wke', with the length of 3."}
+        ],
+        "allTestCases": [
+            {"input": "abcabcbb", "output": "3", "explanation": "The answer is 'abc', with the length of 3."},
+            {"input": "bbbbb", "output": "1", "explanation": "The answer is 'b', with the length of 1."},
+            {"input": "pwwkew", "output": "3", "explanation": "The answer is 'wke', with the length of 3."},
+            {"input": "aab", "output": "2", "explanation": "The answer is 'ab', with the length of 2."},
+            {"input": "dvdf", "output": "3", "explanation": "The answer is 'vdf', with the length of 3."},
+            {"input": "anviaj", "output": "5", "explanation": "The answer is 'nviaj', with the length of 5."},
+            {"input": "tmmzuxt", "output": "5", "explanation": "The answer is 'mzuxt', with the length of 5."},
+            {"input": "", "output": "0", "explanation": "An empty string has a length of 0."},
+            {"input": "abcdefg", "output": "7", "explanation": "The answer is 'abcdefg', with the length of 7."},
+            {"input": "abba", "output": "2", "explanation": "The answer is 'ab', with the length of 2."}
+        ],
+        "driverCode": "def lengthOfLongestSubstring(s: str) -> int:\n    # Write your code here\n\nif __name__ == '__main__':\n    import sys\n    input = sys.stdin.read().strip()\n    print(lengthOfLongestSubstring(input))",
+        "hints": ["Use a sliding window approach to keep track of the current substring.", "Use a set to keep track of characters in the current substring."]
+    },
+    {
+        "title": "String to Integer (atoi)",
+        "description": "<p>Implement the <code>atoi</code> function, which converts a string to an integer. The function should handle leading whitespaces, optional signs, and invalid characters appropriately.</p>",
+        "difficulty": "Medium",
+        "assumptions": ["The input string can be empty or contain leading whitespaces."],
+        "constraints": "<ul><li><b>Input:</b> The input string can contain any printable ASCII character.</li><li><b>Output:</b> The function should return an integer. If the input is invalid, return 0.</li><li><b>Edge Cases:</b> Consider edge cases like overflow and invalid input characters.</li></ul>",
+        "content": "Strings, Conversion",
+        "topicTags": ["String", "Conversion"],
+        "similarQuestions": ["Reverse Integer", "Valid Number"],
+        "sampleTestCase": [
+            {"input": "42", "output": "42", "explanation": "The string '42' is converted to the integer 42."},
+            {"input": "   -42", "output": "-42", "explanation": "The string '   -42' is converted to the integer -42."},
+            {"input": "4193 with words", "output": "4193", "explanation": "The string '4193 with words' is converted to the integer 4193."}
+        ],
+        "allTestCases": [
+            {"input": "42", "output": "42", "explanation": "The string '42' is converted to the integer 42."},
+            {"input": "   -42", "output": "-42", "explanation": "The string '   -42' is converted to the integer -42."},
+            {"input": "4193 with words", "output": "4193", "explanation": "The string '4193 with words' is converted to the integer 4193."},
+            {"input": "words and 987", "output": "0", "explanation": "The string 'words and 987' is converted to 0 because it starts with invalid characters."},
+            {"input": "-91283472332", "output": "-2147483648", "explanation": "The string '-91283472332' is converted to the integer -2147483648 due to overflow."},
+            {"input": "3.14159", "output": "3", "explanation": "The string '3.14159' is converted to the integer 3, ignoring the decimal part."},
+            {"input": "+1", "output": "1", "explanation": "The string '+1' is converted to the integer 1."},
+            {"input": "", "output": "0", "explanation": "An empty string is converted to 0."},
+            {"input": "21474836460", "output": "2147483647", "explanation": "The string '21474836460' is converted to the integer 2147483647 due to overflow."},
+            {"input": "-2147483649", "output": "-2147483648", "explanation": "The string '-2147483649' is converted to the integer -2147483648 due to overflow."}
+        ],
+        "driverCode": "def myAtoi(s: str) -> int:\n    # Write your code here\n\nif __name__ == '__main__':\n    import sys\n    input = sys.stdin.read().strip()\n    print(myAtoi(input))",
+        "hints": ["Handle whitespaces and optional signs separately.", "Consider edge cases like overflow."]
+    },
+    {
+        "title": "Longest Common Prefix",
+        "description": "<p>Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string <code>\"\"</code>.</p>",
+        "difficulty": "Easy",
+        "assumptions": ["All input strings are in lowercase letters a-z."],
+        "constraints": "<ul><li><b>Input:</b> An array of strings <code>strs</code>.</li><li><b>Output:</b> A string representing the longest common prefix.</li></ul>",
+        "content": "Strings",
+        "topicTags": ["String"],
+        "similarQuestions": ["Shortest Unique Prefix", "Longest Common Suffix"],
+        "sampleTestCase": [
+            {"input": ["flower","flow","flight"], "output": "fl", "explanation": "The longest common prefix is 'fl'."},
+            {"input": ["dog","racecar","car"], "output": "", "explanation": "There is no common prefix."}
+        ],
+        "allTestCases": [
+            {"input": ["flower","flow","flight"], "output": "fl", "explanation": "The longest common prefix is 'fl'."},
+            {"input": ["dog","racecar","car"], "output": "", "explanation": "There is no common prefix."},
+            {"input": ["interspecies","interstellar","interstate"], "output": "inters", "explanation": "The longest common prefix is 'inters'."},
+            {"input": ["throne","throne"], "output": "throne", "explanation": "The longest common prefix is 'throne'."},
+            {"input": ["throne","dungeon"], "output": "", "explanation": "There is no common prefix."},
+            {"input": ["throne","thrones"], "output": "throne", "explanation": "The longest common prefix is 'throne'."},
+            {"input": ["reflower","flow","flight"], "output": "", "explanation": "There is no common prefix."},
+            {"input": [""], "output": "", "explanation": "An empty string has no common prefix."},
+            {"input": ["a"], "output": "a", "explanation": "The longest common prefix is 'a'."},
+            {"input": ["aa","a"], "output": "a", "explanation": "The longest common prefix is 'a'."}
+        ],
+        "driverCode": "def longestCommonPrefix(strs: List[str]) -> str:\n    # Write your code here\n\nif __name__ == '__main__':\n    import sys\n    input = sys.stdin.read().strip().split(',')\n    print(longestCommonPrefix(input))",
+        "hints": ["Compare characters from the beginning of each string.", "Use a vertical scanning approach."]
+    },
+    {
+        "title": "Group Anagrams",
+        "description": "<p>Given an array of strings, group the anagrams together. An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.</p>",
+        "difficulty": "Medium",
+        "assumptions": ["All input strings are in lowercase letters a-z."],
+        "constraints": "<ul><li><b>Input:</b> An array of strings <code>strs</code>.</li><li><b>Output:</b> A list of lists of strings grouped by anagram.</li></ul>",
+        "content": "Strings, Hash Table",
+        "topicTags": ["String", "Hash Table"],
+        "similarQuestions": ["Valid Anagram", "Find All Anagrams in a String"],
+        "sampleTestCase": [
+            {"input": ["eat","tea","tan","ate","nat","bat"], "output": [["eat","tea","ate"],["tan","nat"],["bat"]], "explanation": "The groups are ['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']."},
+            {"input": [""], "output": [[""]], "explanation": "The group is ['']."},
+            {"input": ["a"], "output": [["a"]], "explanation": "The group is ['a']."}
+        ],
+        "allTestCases": [
+            {"input": ["eat","tea","tan","ate","nat","bat"], "output": [["eat","tea","ate"],["tan","nat"],["bat"]], "explanation": "The groups are ['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']."},
+            {"input": [""], "output": [[""]], "explanation": "The group is ['']."},
+            {"input": ["a"], "output": [["a"]], "explanation": "The group is ['a']."},
+            {"input": ["listen","silent","enlist"], "output": [["listen","silent","enlist"]], "explanation": "The group is ['listen', 'silent', 'enlist']."},
+            {"input": ["abcd","dcba","lls","s","sssll"], "output": [["abcd","dcba"],["lls"],["s"],["sssll"]], "explanation": "The groups are ['abcd', 'dcba'], ['lls'], ['s'], ['sssll']."},
+            {"input": ["eat","tea","tan","ate","nat","bat","tab"], "output": [["eat","tea","ate"],["tan","nat"],["bat","tab"]], "explanation": "The groups are ['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat', 'tab']."},
+            {"input": ["ab","ba","abc","cab","bac"], "output": [["ab","ba"],["abc","cab","bac"]], "explanation": "The groups are ['ab', 'ba'], ['abc', 'cab', 'bac']."},
+            {"input": ["","",""], "output": [["",""]], "explanation": "The group is ['', '', '']."},
+            {"input": ["abc","bca","acb"], "output": [["abc","bca","acb"]], "explanation": "The group is ['abc', 'bca', 'acb']."},
+            {"input": ["anagram","nagaram","gramana"], "output": [["anagram","nagaram","gramana"]], "explanation": "The group is ['anagram', 'nagaram', 'gramana']."}
+        ],
+        "driverCode": "from typing import List\n\ndef groupAnagrams(strs: List[str]) -> List[List[str]]:\n    # Write your code here\n\nif __name__ == '__main__':\n    import sys\n    input = sys.stdin.read().strip().split(',')\n    print(groupAnagrams(input))",
+        "hints": ["Use a hash table to group anagrams by sorted string."]
+    },
+    {
+        "title": "Count and Say",
+        "description": "<p>The <i>count-and-say</i> sequence is a sequence of digit strings defined by the recursive formula:</p><ul><li><b>countAndSay(1)</b> = '1'</li><li><b>countAndSay(n)</b> is the way you would 'say' the digit string from <b>countAndSay(n-1)</b>, which is then converted into a different digit string.</li></ul><p>Write a function to generate the <i>n<sup>th</sup></i> term of the count-and-say sequence.</p>",
+        "difficulty": "Medium",
+        "assumptions": ["1 ≤ n ≤ 30"],
+        "constraints": "<ul><li><b>Input:</b> An integer <code>n</code>.</li><li><b>Output:</b> A string representing the <i>n<sup>th</sup></i> term of the count-and-say sequence.</li></ul>",
+        "content": "Strings, Recursion",
+        "topicTags": ["String", "Recursion"],
+        "similarQuestions": ["Look-and-say sequence", "String Compression"],
+        "sampleTestCase": [
+            {"input": 1, "output": "1", "explanation": "The first term is '1'."},
+            {"input": 4, "output": "1211", "explanation": "The fourth term is '1211'."}
+        ],
+        "allTestCases": [
+            {"input": 1, "output": "1", "explanation": "The first term is '1'."},
+            {"input": 2, "output": "11", "explanation": "The second term is '11'."},
+            {"input": 3, "output": "21", "explanation": "The third term is '21'."},
+            {"input": 4, "output": "1211", "explanation": "The fourth term is '1211'."},
+            {"input": 5, "output": "111221", "explanation": "The fifth term is '111221'."},
+            {"input": 6, "output": "312211", "explanation": "The sixth term is '312211'."},
+            {"input": 7, "output": "13112221", "explanation": "The seventh term is '13112221'."},
+            {"input": 8, "output": "1113213211", "explanation": "The eighth term is '1113213211'."},
+            {"input": 9, "output": "31131211131221", "explanation": "The ninth term is '31131211131221'."},
+            {"input": 10, "output": "13211311123113112211", "explanation": "The tenth term is '13211311123113112211'."}
+        ],
+        "driverCode": "def countAndSay(n: int) -> str:\n    # Write your code here\n\nif __name__ == '__main__':\n    import sys\n    input = int(sys.stdin.read().strip())\n    print(countAndSay(input))",
+        "hints": ["Use recursion to build the sequence.", "Generate each term by counting and saying the digits of the previous term."]
+    },
+    {
+        "title": "Minimum Window Substring",
+        "description": "<p>Given two strings <code>s</code> and <code>t</code>, return the minimum window in <code>s</code> which will contain all the characters in <code>t</code>. If there is no such window in <code>s</code> that covers all characters in <code>t</code>, return the empty string <code>\"\"</code>.</p>",
+        "difficulty": "Hard",
+        "assumptions": ["The input strings consist of lowercase and uppercase English letters."],
+        "constraints": "<ul><li><b>Input:</b> Two strings <code>s</code> and <code>t</code>.</li><li><b>Output:</b> The minimum window in <code>s</code> that contains all characters in <code>t</code>.</li></ul>",
+        "content": "Strings, Sliding Window",
+        "topicTags": ["String", "Sliding Window"],
+        "similarQuestions": ["Longest Substring Without Repeating Characters", "Substring with Concatenation of All Words"],
+        "sampleTestCase": [
+            {"input": {"s": "ADOBECODEBANC", "t": "ABC"}, "output": "BANC", "explanation": "The minimum window is 'BANC'."},
+            {"input": {"s": "a", "t": "a"}, "output": "a", "explanation": "The minimum window is 'a'."},
+            {"input": {"s": "a", "t": "aa"}, "output": "", "explanation": "There is no such window that contains all characters in 'aa'."}
+        ],
+        "allTestCases": [
+            {"input": {"s": "ADOBECODEBANC", "t": "ABC"}, "output": "BANC", "explanation": "The minimum window is 'BANC'."},
+            {"input": {"s": "a", "t": "a"}, "output": "a", "explanation": "The minimum window is 'a'."},
+            {"input": {"s": "a", "t": "aa"}, "output": "", "explanation": "There is no such window that contains all characters in 'aa'."},
+            {"input": {"s": "ab", "t": "a"}, "output": "a", "explanation": "The minimum window is 'a'."},
+            {"input": {"s": "ab", "t": "b"}, "output": "b", "explanation": "The minimum window is 'b'."},
+            {"input": {"s": "cabwefgewcwaefgcf", "t": "cae"}, "output": "cwae", "explanation": "The minimum window is 'cwae'."},
+            {"input": {"s": "aa", "t": "aa"}, "output": "aa", "explanation": "The minimum window is 'aa'."},
+            {"input": {"s": "aaflslflsldkalskaaa", "t": "aaa"}, "output": "aaa", "explanation": "The minimum window is 'aaa'."},
+            {"input": {"s": "bba", "t": "ab"}, "output": "ba", "explanation": "The minimum window is 'ba'."},
+            {"input": {"s": "abc", "t": "cba"}, "output": "abc", "explanation": "The minimum window is 'abc'."}
+        ],
+        "driverCode": "def minWindow(s: str, t: str) -> str:\n    # Write your code here\n\nif __name__ == '__main__':\n    import sys\n    input_data = sys.stdin.read().strip().split(',')\n    s = input_data[0]\n    t = input_data[1]\n    print(minWindow(s, t))",
+        "hints": ["Use a sliding window approach to find the minimum window.", "Use two pointers to keep track of the current window."]
+    },
+    {
+        "title": "Longest Palindromic Substring",
+        "description": "<p>Given a string <code>s</code>, return the longest palindromic substring in <code>s</code>.</p>",
+        "difficulty": "Medium",
+        "assumptions": ["The input string consists of lowercase and uppercase English letters."],
+        "constraints": "<ul><li><b>Input:</b> A string <code>s</code>.</li><li><b>Output:</b> The longest palindromic substring in <code>s</code>.</li></ul>",
+        "content": "Strings, Dynamic Programming",
+        "topicTags": ["String", "Dynamic Programming"],
+        "similarQuestions": ["Palindromic Substrings", "Shortest Palindrome"],
+        "sampleTestCase": [
+            {"input": "babad", "output": "bab", "explanation": "The longest palindromic substring is 'bab'. Note that 'aba' is also a valid answer."},
+            {"input": "cbbd", "output": "bb", "explanation": "The longest palindromic substring is 'bb'."}
+        ],
+        "allTestCases": [
+            {"input": "babad", "output": "bab", "explanation": "The longest palindromic substring is 'bab'. Note that 'aba' is also a valid answer."},
+            {"input": "cbbd", "output": "bb", "explanation": "The longest palindromic substring is 'bb'."},
+            {"input": "a", "output": "a", "explanation": "The longest palindromic substring is 'a'."},
+            {"input": "ac", "output": "a", "explanation": "The longest palindromic substring is 'a'. Note that 'c' is also a valid answer."},
+            {"input": "bb", "output": "bb", "explanation": "The longest palindromic substring is 'bb'."},
+            {"input": "ccc", "output": "ccc", "explanation": "The longest palindromic substring is 'ccc'."},
+            {"input": "racecar", "output": "racecar", "explanation": "The longest palindromic substring is 'racecar'."},
+            {"input": "abcdcba", "output": "abcdcba", "explanation": "The longest palindromic substring is 'abcdcba'."},
+            {"input": "aabbcc", "output": "aa", "explanation": "The longest palindromic substring is 'aa'. Note that 'bb' and 'cc' are also valid answers."},
+            {"input": "bananas", "output": "anana", "explanation": "The longest palindromic substring is 'anana'."}
+        ],
+        "driverCode": "def longestPalindrome(s: str) -> str:\n    # Write your code here\n\nif __name__ == '__main__':\n    import sys\n    input = sys.stdin.read().strip()\n    print(longestPalindrome(input))",
+        "hints": ["Use dynamic programming to find the longest palindromic substring.", "Consider both odd and even length palindromes."]
+    },
+    {
+        "title": "Valid Parentheses",
+        "description": "<p>Given a string containing just the characters <code>'('</code>, <code>')'</code>, <code>'{'</code>, <code>'}'</code>, <code>'['</code>, <code>']'</code>, determine if the input string is valid.</p><p>An input string is valid if:</p><ul><li>Open brackets must be closed by the same type of brackets.</li><li>Open brackets must be closed in the correct order.</li></ul>",
+        "difficulty": "Easy",
+        "assumptions": ["The input string only contains the characters '(', ')', '{', '}', '[', and ']'."],
+        "constraints": "<ul><li><b>Input:</b> A string containing just the characters <code>'('</code>, <code>')'</code>, <code>'{'</code>, <code>'}'</code>, <code>'['</code>, <code>']'</code>.</li><li><b>Output:</b> A boolean value indicating whether the input string is valid.</li></ul>",
+        "content": "Strings, Stack",
+        "topicTags": ["String", "Stack"],
+        "similarQuestions": ["Generate Parentheses", "Longest Valid Parentheses"],
+        "sampleTestCase": [
+            {"input": "()", "output": "true", "explanation": "The input string '()' is valid."},
+            {"input": "()[]{}", "output": "true", "explanation": "The input string '()[]{}' is valid."},
+            {"input": "(]", "output": "false", "explanation": "The input string '(]' is not valid."}
+        ],
+        "allTestCases": [
+            {"input": "()", "output": "true", "explanation": "The input string '()' is valid."},
+            {"input": "()[]{}", "output": "true", "explanation": "The input string '()[]{}' is valid."},
+            {"input": "(]", "output": "false", "explanation": "The input string '(]' is not valid."},
+            {"input": "([)]", "output": "false", "explanation": "The input string '([)]' is not valid."},
+            {"input": "{[]}", "output": "true", "explanation": "The input string '{[]}' is valid."},
+            {"input": "(([]){})", "output": "true", "explanation": "The input string '(([]){})' is valid."},
+            {"input": "({[()]})", "output": "true", "explanation": "The input string '({[()]})' is valid."},
+            {"input": "({[()]}[", "output": "false", "explanation": "The input string '({[()]}[' is not valid."},
+            {"input": "", "output": "true", "explanation": "An empty string is valid."},
+            {"input": "{[()]}", "output": "true", "explanation": "The input string '{[()]}' is valid."}
+        ],
+        "driverCode": "def isValid(s: str) -> bool:\n    # Write your code here\n\nif __name__ == '__main__':\n    import sys\n    input = sys.stdin.read().strip()\n    print(isValid(input))",
+        "hints": ["Use a stack to keep track of opening brackets.", "When you encounter a closing bracket, check if it matches the top of the stack."]
+    }
+]

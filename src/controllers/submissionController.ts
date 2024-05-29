@@ -3,12 +3,23 @@ import { Response, Request } from "express";
 import axios from "axios";
 import "dotenv/config";
 
-
 interface TestCase {
     input: string;
-    expectedOutput: string;
+    output: string;
+    explanation: string;
 }
 
+interface Result {
+    input: string;
+    expectedOutput: string;
+    output: string;
+    status: {
+        id: number;
+        description: string;
+    };
+    time: number;
+    memory: number;
+}
 
 export const createSubmissionOrRunTests = async (
     req: Request,
@@ -16,6 +27,7 @@ export const createSubmissionOrRunTests = async (
 ): Promise<void> => {
     try {
         const { userId, problemId, sessionId, languageId, code } = req.body;
+
 
         if (!userId || !problemId || !sessionId || !languageId || !code) {
             res.status(400).json({ message: "Missing required fields" });
@@ -41,10 +53,12 @@ export const createSubmissionOrRunTests = async (
             }
     
             const driverCode = challenge.driverCode;
-            const fullCode = `${code}\n\n${driverCode}`;
+            // const fullCode = `${code}\n\n${driverCode}`;
             const testCases = challenge.sampleTestCase as unknown as TestCase[];
-            const results = await runTestCases(fullCode, languageId, testCases);
-            res.status(200).json({ results, status: "success" });
+            const results = await runTestCases(code, languageId, testCases);
+            // const results = await submitBatch(code, languageId, testCases);
+
+            res.status(200).json({ "output_data": results, status: "Success" });
         }
 
 
@@ -66,16 +80,16 @@ export const createSubmissionOrRunTests = async (
                 return;
             }
             const driverCode = challenge.driverCode;
-            const fullCode = `${code}\n\n${driverCode}`;
+            // const fullCode = `${code}\n\n${driverCode}`;
             const testCases = challenge.allTestCases as unknown as TestCase[];
-            const results = await submitBatch(fullCode, languageId, testCases);
+            const results = await submitBatch(code, languageId, testCases);
 
             // create submission
             const submission = await prisma.submission.create({
                 data: {
                     user_id: userId,
                     challenge_id: problemId,
-                    code: fullCode,
+                    code: code,
                     status: results.status,
                     runtime: results.runtime,
                     memory: results.memory,
@@ -88,6 +102,7 @@ export const createSubmissionOrRunTests = async (
 
 
     } catch (error) {
+        console.log(error)
         res.status(500).json({ message: "Failed to submit code", error });
     }
        
@@ -99,89 +114,140 @@ const runTestCases = async (code: string, languageId: number, testCases: TestCas
     if (!code || !languageId || !testCases) {
         return null;
     }
-    const results = [];
+
+    const results: Result[] = [];
 
     for (const testCase of testCases) {
         const input = testCase.input;
-        const expectedOutput = testCase.expectedOutput;
+        const expectedOutput = testCase.output;
 
-        const response = await submitCode(code, input, languageId);
+        const response = await submitCode(code, input, expectedOutput, languageId);
         if (!response) {
             return null;
         }
 
-        const result = {
+        console.log(response);
+
+        const result: Result = {
             input,
             expectedOutput,
-            output: response?.stdout ?? "",
-            status: response?.status,
+            output: response.stdout.trim(),
+            status: response.status,
+            time: parseFloat(response.time), 
+            memory: parseInt(response.memory),
         };
         results.push(result);
     }
-    return results;
-}
+
+    // Calculate average runtime and memory usage
+    const totalRuntime = results.reduce((acc, result) => acc + result.time, 0);
+    const totalMemory = results.reduce((acc, result) => acc + result.memory, 0);
+    const averageRuntime = totalRuntime / results.length;
+    const averageMemory = totalMemory / results.length;
+
+    return {
+        results,
+        averageRuntime,
+        averageMemory,
+    };
+};
 
 
-const submitCode = async (
-    code: string,
-    input: string,
-    languageId: number
-): Promise<any> => {
-    if (!code || input || !languageId) {
+
+// Function to decode Base64
+const decodeBase64 = (encodedString:any) => {
+    try {
+        const buffer = Buffer.from(encodedString, 'base64');
+        return buffer.toString('utf-8');
+    } catch (error:any) {
+        return `Error decoding Base64: ${error.message}`;
+    }
+};
+
+// Function to submit the code and get the result
+const submitCode = async (code:any, input:any,  expectedOutput:any, languageId:number) => {
+    if (!code || !languageId) {
         return null;
     }
 
-    // submit to judge0
     try {
         const response = await axios.post(
             `${process.env.RAPID_API_URL}/submissions`,
             {
-                source_code: code,
+                source_code: Buffer.from(code).toString('base64'),  
                 language_id: languageId,
-                stdin: input,
+                stdin: Buffer.from(input).toString('base64'),      
+                expected_output: Buffer.from(expectedOutput).toString('base64'), 
             },
             {
                 headers: {
-                    "x-rapidapi-host": `${process.env.RAPID_API_HOST}`,
+                    "x-rapidapi-host": process.env.RAPID_API_HOST,
                     "x-rapidapi-key": process.env.RAPID_API_KEY,
+                    "Content-Type": "application/json",
+                },
+                params: {
+                    base64_encoded: "true",
+                    fields: "*",
                 },
             }
         );
-        
-        // check if submission was successful and get submission
+
         if (response.status === 201) {
             const submissionId = response.data.token;
-            const submission = await axios.get(
+            const submissionResponse = await axios.get(
                 `${process.env.RAPID_API_URL}/submissions/${submissionId}`,
                 {
                     headers: {
-                        "x-rapidapi-host": `${process.env.RAPID_API_HOST}`,
+                        "x-rapidapi-host": process.env.RAPID_API_HOST,
                         "x-rapidapi-key": process.env.RAPID_API_KEY,
+                        "Content-Type": "application/json",
+                    },
+                    params: {
+                        base64_encoded: "true",
+                        fields: "*",
                     },
                 }
-            )
-            return submission;
+            );
+
+            const submissionData = submissionResponse.data;
+
+            // Decode Base64 encoded fields
+            if (submissionData.stdout) {
+                submissionData.stdout = decodeBase64(submissionData.stdout);
+            }
+            if (submissionData.stderr) {
+                submissionData.stderr = decodeBase64(submissionData.stderr);
+            }
+            if (submissionData.compile_output) {
+                submissionData.compile_output = decodeBase64(submissionData.compile_output);
+            }
+
+            return submissionData;
         }
 
+        console.log(response.data);
         return null;
-    } catch {
+    } catch (error) {
+        console.log(error);
         return null;
     }
 };
 
 
+
 const submitBatch = async (code: string, languageId: number, testCases: TestCase[]): Promise<any> => {
     if (!code || !languageId || !testCases) {
+        console.log("Missing required parameters");
         return null;
     }
 
     // submit batch submission to judge0
     try {
         const submissions = testCases.map((testCase) => ({
-            source_code: code,
-            language_id: languageId,
-            stdin: testCase.input,
-            expected_output: testCase.expectedOutput,
+                source_code: Buffer.from(code).toString('base64'),  
+                language_id: languageId,
+                stdin: Buffer.from(testCase.input).toString('base64'),      
+                expected_output: Buffer.from(testCase.output).toString('base64'), 
         }));
 
         const response = await axios.post(
@@ -189,6 +255,7 @@ const submitBatch = async (code: string, languageId: number, testCases: TestCase
             { submissions }
         );
 
+        console.log(response.data);
         // check if submission was successful and get submission for each submission
         if (response.status === 201) {
             const submissionIds = response.data.map((submission: any) => submission.token);
@@ -203,12 +270,28 @@ const submitBatch = async (code: string, languageId: number, testCases: TestCase
                             },
                         }
                     );
-                    return submission;
+
+                    // Decode Base64 encoded fields
+                    if (submission.data.stdout) {
+                        submission.data.stdout = decodeBase64(submission.data.stdout);
+                    }
+                    if (submission.data.stderr) {
+                        submission.data.stderr = decodeBase64(submission.data.stderr);
+                    }
+                    if (submission.data.compile_output) {
+                        submission.data.compile_output = decodeBase64(submission.data.compile_output);
+                    }
+
+                    console.log(submission.data);
+                    
+
+                    return submission.data;
                 })
             );
             return submissions;
         }   
-    } catch {
+    } catch(error) {
+        console.log(error)
         return null;
     }
 }
