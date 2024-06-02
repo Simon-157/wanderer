@@ -1,9 +1,9 @@
 import "dotenv/config";
 import passport from "passport";
 import { Strategy as GoogleStrategy, StrategyOptions } from "passport-google-oauth20";
-import { prisma } from "@/config/prisma";
+import { prisma } from "../config/prisma";
 import { randomUUID } from "crypto";
-import { logger } from "@/config/logger";
+import { logger } from "../config/logger";
 
 
 const googleStrategyMiddleware = new GoogleStrategy(

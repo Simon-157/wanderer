@@ -1,5 +1,5 @@
 import RedisStore from "connect-redis";
-import { redisClient } from "@/config/redis";
+import { redisClient } from "../config/redis";
 import { Session, SessionOptions } from "express-session";
 
 export const sessionMiddleware = {

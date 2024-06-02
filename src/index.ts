@@ -3,14 +3,14 @@ import express from "express";
 import cors from "cors";
 import passport from "passport";
 import session from "express-session";
-import { router as authRoutes } from "@/routes/authRoute";
-import { router as rootRoutes } from "@/routes/rootRoutes";
-import { router as apiRoutes } from "@/routes/apiRoutes";
-import { corsMiddleware } from "@/middleware/corsMiddleware";
-import { sessionMiddleware } from "@/middleware/sessionMiddleware";
-import { logger } from "@/config/logger";
-import { httpLogger } from "@/middleware/requestLogger";
-import { errorHandler, notFoundHandler } from "@/middleware/errorHandler";
+import { router as authRoutes } from "./routes/authRoute";
+import { router as rootRoutes } from "./routes/rootRoutes";
+import { router as apiRoutes } from "./routes/apiRoutes";
+import { corsMiddleware } from "./middleware/corsMiddleware";
+import { sessionMiddleware } from "./middleware/sessionMiddleware";
+import { logger } from "./config/logger";
+import { httpLogger } from "./middleware/requestLogger";
+import { errorHandler, notFoundHandler } from "./middleware/errorHandler";
 
 const app = express();
 

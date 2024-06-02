@@ -1,16 +1,15 @@
-import { prisma } from "../config/prisma";
-
-
-export const createChallenge = async (req: any, res: any) : Promise<void> => {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.updateChallenge = exports.getChallenge = exports.getChallenges = exports.createManyChallenges = exports.deleteAllChallenges = exports.createChallenge = void 0;
+const prisma_1 = require("../config/prisma");
+const createChallenge = async (req, res) => {
     const { title, description, difficulty, topicTags, similarQuestions, sampleTestCase, hints, driverCode, allTestCases, content } = req.body;
-
     if (!title || !description || !difficulty || !topicTags || !similarQuestions || !sampleTestCase || !hints || !driverCode || !allTestCases || !content) {
         res.status(400).json({ message: "Missing required fields" });
         return;
     }
-
     try {
-        const challenge = await prisma.challenge.create({
+        const challenge = await prisma_1.prisma.challenge.create({
             data: {
                 title,
                 description,
@@ -23,85 +22,78 @@ export const createChallenge = async (req: any, res: any) : Promise<void> => {
                 driverCode,
                 hints
             }
-        })
+        });
         res.status(201).json({ message: "Challenge created successfully", challenge });
-    } catch (error) {
+    }
+    catch (error) {
         console.error(error);
         res.status(500).json({ message: "Failed to create challenge", error });
     }
-}
-
-export const deleteAllChallenges = async (req: any, res: any) : Promise<void> => {
+};
+exports.createChallenge = createChallenge;
+const deleteAllChallenges = async (req, res) => {
     try {
-        const challenges = await prisma.challenge.deleteMany();
+        const challenges = await prisma_1.prisma.challenge.deleteMany();
         res.status(200).json({ message: "Challenges deleted successfully", challenges });
-    } catch (error) {
+    }
+    catch (error) {
         res.status(500).json({ message: "Failed to delete challenges", error });
     }
-}
-
-
-export const createManyChallenges = async (req: any, res: any): Promise<void> => {
+};
+exports.deleteAllChallenges = deleteAllChallenges;
+const createManyChallenges = async (req, res) => {
     const { challenges } = req.body;
-
     if (!challenges || !Array.isArray(challenges)) {
         res.status(400).json({ message: "Invalid or missing challenges array" });
         return;
     }
-
     try {
-        const createdChallenges = await prisma.challenge.createMany({
+        const createdChallenges = await prisma_1.prisma.challenge.createMany({
             data: challenges,
         });
-
         res.status(201).json({ message: "Challenges created successfully", challenges: createdChallenges });
-    } catch (error) {
+    }
+    catch (error) {
         res.status(500).json({ message: "Failed to create challenges", error });
     }
-}
-
-
-export const getChallenges = async (req: any, res: any) : Promise<void> => {
+};
+exports.createManyChallenges = createManyChallenges;
+const getChallenges = async (req, res) => {
     try {
-        const challenges = await prisma.challenge.findMany();
+        const challenges = await prisma_1.prisma.challenge.findMany();
         res.status(200).json(challenges);
-    } catch (error) {
+    }
+    catch (error) {
         res.status(500).json({ message: "Failed to fetch challenges", error });
     }
-}
-
-
-
-export const getChallenge = async (req: any, res: any) : Promise<void> => {
+};
+exports.getChallenges = getChallenges;
+const getChallenge = async (req, res) => {
     const { id } = req.params;
     try {
-        const challenge = await prisma.challenge.findUnique({
-            where: {challenge_id: parseInt(id) }
+        const challenge = await prisma_1.prisma.challenge.findUnique({
+            where: { challenge_id: parseInt(id) }
         });
-
         if (!challenge) {
             res.status(404).json({ message: "Challenge not found" });
             return;
         }
-
         res.status(200).json(challenge);
-    } catch (error) {
+    }
+    catch (error) {
         res.status(500).json({ message: "Failed to fetch challenge", error });
     }
-}
-
-
-export const updateChallenge = async (req: any, res: any) : Promise<void> => {
+};
+exports.getChallenge = getChallenge;
+const updateChallenge = async (req, res) => {
     const { id } = req.params;
     const { title, description, difficulty, topicTags, similarQuestions, sampleTestCase, hints } = req.body;
-
     if (!title || !description || !difficulty || !topicTags || !similarQuestions || !sampleTestCase || !hints) {
         res.status(400).json({ message: "Missing required fields" });
         return;
     }
-
     try {
-        const challenge = await prisma.challenge.update({
+        const challenge = await prisma_1.prisma.challenge.update({
             where: { challenge_id: parseInt(id) },
             data: {
                 title,
@@ -112,10 +104,11 @@ export const updateChallenge = async (req: any, res: any) : Promise<void> => {
                 sampleTestCase,
                 hints
             }
-        })
+        });
         res.status(200).json({ message: "Challenge updated successfully", challenge });
-    } catch (error) {
+    }
+    catch (error) {
         res.status(500).json({ message: "Failed to update challenge", error });
     }
-}
-
+};
+exports.updateChallenge = updateChallenge;

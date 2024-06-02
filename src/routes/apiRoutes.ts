@@ -1,8 +1,8 @@
 import { createPracticeSession, getPracticedSessions, getPracticedSession, deleteAllPracticeSessions } from "../controllers/sessionController";
 import { getChallenges, getChallenge, createChallenge, updateChallenge, createManyChallenges, deleteAllChallenges } from "../controllers/problemsController";
 import { Router } from "express";
-import { prisma } from "@/config/prisma";
-import { createSubmissionOrRunTests } from "@/controllers/submissionController";
+import { prisma } from "../config/prisma";
+import { createSubmissionOrRunTests } from "../controllers/submissionController";
 
 
 
