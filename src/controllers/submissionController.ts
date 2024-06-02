@@ -28,14 +28,12 @@ export const createSubmissionOrRunTests = async (
     try {
         const { userId, problemId, sessionId, languageId, code } = req.body;
 
-
         if (!userId || !problemId || !sessionId || !languageId || !code) {
             res.status(400).json({ message: "Missing required fields" });
             return;
         }
-        
+
         //GET challenge drivercode and testcases if req.test type = test or submit
-        
         if(req.query.type === "test") {
             const challenge = await prisma.challenge.findUnique({
                 where: {
@@ -46,24 +44,19 @@ export const createSubmissionOrRunTests = async (
                     driverCode: true,
                 },
             });
-    
+
             if(!challenge) {
                 res.status(404).json({ message: "Challenge not found" });
                 return;
             }
-    
+
             const driverCode = challenge.driverCode;
             // const fullCode = `${code}\n\n${driverCode}`;
             const testCases = challenge.sampleTestCase as unknown as TestCase[];
             const results = await runTestCases(code, languageId, testCases);
-            // const results = await submitBatch(code, languageId, testCases);
 
             res.status(200).json({ "output_data": results, status: "Success" });
-        }
-
-
-        else if(req.query.type === "submit") {
-
+        } else if(req.query.type === "submit") {
             const challenge = await prisma.challenge.findUnique({
                 where: {
                     challenge_id: problemId,
@@ -72,8 +65,7 @@ export const createSubmissionOrRunTests = async (
                     allTestCases: true,
                     driverCode: true,
                 },
-            })
-
+            });
 
             if(!challenge) {
                 res.status(404).json({ message: "Challenge not found" });
@@ -82,7 +74,7 @@ export const createSubmissionOrRunTests = async (
             const driverCode = challenge.driverCode;
             // const fullCode = `${code}\n\n${driverCode}`;
             const testCases = challenge.allTestCases as unknown as TestCase[];
-            const results = await submitBatch(code, languageId, testCases);
+            const results = await runTestCases(code, languageId, testCases);
 
             // create submission
             const submission = await prisma.submission.create({
@@ -99,16 +91,20 @@ export const createSubmissionOrRunTests = async (
 
             res.status(200).json({ results, status: "success" });
         }
-
-
     } catch (error) {
-        console.log(error)
+        console.log(error);
         res.status(500).json({ message: "Failed to submit code", error });
     }
-       
 };
 
-
+const decodeBase64 = (encodedString: any) => {
+    try {
+        const buffer = Buffer.from(encodedString, 'base64');
+        return buffer.toString('utf-8');
+    } catch (error: any) {
+        return `Error decoding Base64: ${error.message}`;
+    }
+};
 
 const runTestCases = async (code: string, languageId: number, testCases: TestCase[]): Promise<any> => {
     if (!code || !languageId || !testCases) {
@@ -153,19 +149,8 @@ const runTestCases = async (code: string, languageId: number, testCases: TestCas
 };
 
 
-
-// Function to decode Base64
-const decodeBase64 = (encodedString:any) => {
-    try {
-        const buffer = Buffer.from(encodedString, 'base64');
-        return buffer.toString('utf-8');
-    } catch (error:any) {
-        return `Error decoding Base64: ${error.message}`;
-    }
-};
-
 // Function to submit the code and get the result
-const submitCode = async (code:any, input:any,  expectedOutput:any, languageId:number) => {
+const submitCode = async (code: any, input: any, expectedOutput: any, languageId: number) => {
     if (!code || !languageId) {
         return null;
     }
@@ -194,34 +179,47 @@ const submitCode = async (code:any, input:any,  expectedOutput:any, languageId:n
 
         if (response.status === 201) {
             const submissionId = response.data.token;
-            const submissionResponse = await axios.get(
-                `${process.env.RAPID_API_URL}/submissions/${submissionId}`,
-                {
-                    headers: {
-                        "x-rapidapi-host": process.env.RAPID_API_HOST,
-                        "x-rapidapi-key": process.env.RAPID_API_KEY,
-                        "Content-Type": "application/json",
-                    },
-                    params: {
-                        base64_encoded: "true",
-                        fields: "*",
-                    },
+            let submissionData;
+            const maxRetries = 10;
+            const retryInterval = 2000; 
+
+            for (let i = 0; i < maxRetries; i++) {
+                const submissionResponse = await axios.get(
+                    `${process.env.RAPID_API_URL}/submissions/${submissionId}`,
+                    {
+                        headers: {
+                            "x-rapidapi-host": process.env.RAPID_API_HOST,
+                            "x-rapidapi-key": process.env.RAPID_API_KEY,
+                            "Content-Type": "application/json",
+                        },
+                        params: {
+                            base64_encoded: "true",
+                            fields: "*",
+                        },
+                    }
+                );
+
+                submissionData = submissionResponse.data;
+
+                // Decode Base64 encoded fields
+                if (submissionData.stdout) {
+                    submissionData.stdout = decodeBase64(submissionData.stdout);
                 }
-            );
+                if (submissionData.stderr) {
+                    submissionData.stderr = decodeBase64(submissionData.stderr);
+                }
+                if (submissionData.compile_output) {
+                    submissionData.compile_output = decodeBase64(submissionData.compile_output);
+                }
 
-            const submissionData = submissionResponse.data;
+                if (submissionData.status.id > 2) { // Finished status (e.g., Accepted, Wrong Answer, etc.)
+                    return submissionData;
+                }
 
-            // Decode Base64 encoded fields
-            if (submissionData.stdout) {
-                submissionData.stdout = decodeBase64(submissionData.stdout);
-            }
-            if (submissionData.stderr) {
-                submissionData.stderr = decodeBase64(submissionData.stderr);
-            }
-            if (submissionData.compile_output) {
-                submissionData.compile_output = decodeBase64(submissionData.compile_output);
+                await new Promise(resolve => setTimeout(resolve, retryInterval));
             }
 
+            // If the status is still not finished after max retries, return the last status
             return submissionData;
         }
 
