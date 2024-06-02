@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prisma": "prisma generate",
     "dev": "nodemon -r ts-node/register -r tsconfig-paths/register src/index.ts",
-    "build": "tsc",
+    "build": "tsc -v && tsc -p tsconfig.json",
     "start": "node -r tsconfig-paths/register dist/index.js"
   },
   "dependencies": {
