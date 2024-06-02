@@ -131,7 +131,7 @@ const runTestCases = async (code: string, languageId: number, testCases: TestCas
         const result: Result = {
             input,
             expectedOutput,
-            output: response.stdout.trim(),
+            output: response.stdout?.trim(),
             status: response.status,
             time: parseFloat(response.time), 
             memory: parseInt(response.memory),
