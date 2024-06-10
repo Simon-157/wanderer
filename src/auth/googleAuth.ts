@@ -85,23 +85,23 @@ const googleStrategyMiddleware = new GoogleStrategy(
 const serializeMiddleware = (user: any, done: any) => {
   try {
     // console.log(user);
-    done(null, user);
+    done(null, user.id);
   } catch (err) {
     console.error(err);
     done(err, null);
   }
 };
 
-const deserializeMiddleware = async (user: any, done: any) => {
-  // console.log(id);
+const deserializeMiddleware = async (id: any, done: any) => {
+  console.log(id);
   try {
-    // logger.info(`auth user ID ${id}`);
-    // const user = await prisma.appUser.findFirst({
-    //   where: { id: id },
-    //   include: { AuthProvider: true },
-    // });
+    logger.info(`auth user ID ${id}`);
+    const user = await prisma.appUser.findFirst({
+      where: { id: id },
+      include: { AuthProvider: true },
+    });
 
-    // logger.log({ level: "info", message: `${user}` });
+    logger.log({ level: "info", message: `${user}` });
 
 
     done(null, user);
