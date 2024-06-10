@@ -1,0 +1,751 @@
+[
+  {
+    "title": "Reverse a String",
+    "description": "<p>Write a function to reverse a given string. The input string is provided as a single word without spaces.</p>",
+    "difficulty": "Easy",
+    "assumptions": ["The input will always be a valid string.", "The string will not contain any spaces."],
+    "constraints": "<ul><li>The length of the string is between <b>1</b> and <b>1000</b>.</li></ul>",
+    "content": "Write a function to reverse a given string. The input string is provided as a single word without spaces.",
+    "topicTags": ["String Manipulation"],
+    "similarQuestions": ["Palindrome Check", "String Rotation"],
+    "sampleTestCase": [
+      {
+        "input": "hello",
+        "output": "olleh",
+        "explanation": "The reverse of 'hello' is 'olleh'. This involves reversing the order of the characters."
+      },
+      {
+        "input": "world",
+        "output": "dlrow",
+        "explanation": "The reverse of 'world' is 'dlrow'. Reversing the characters results in the output."
+      }
+    ],
+    "allTestCases": [
+      {
+        "input": "algorithm",
+        "output": "mhtirogla",
+        "explanation": "The reverse of 'algorithm' is 'mhtirogla'."
+      },
+      {
+        "input": "data",
+        "output": "atad",
+        "explanation": "The reverse of 'data' is 'atad'."
+      },
+      {
+        "input": "python",
+        "output": "nohtyp",
+        "explanation": "The reverse of 'python' is 'nohtyp'."
+      },
+      {
+        "input": "string",
+        "output": "gnirts",
+        "explanation": "The reverse of 'string' is 'gnirts'."
+      },
+      {
+        "input": "challenge",
+        "output": "egnellahc",
+        "explanation": "The reverse of 'challenge' is 'egnellahc'."
+      },
+      {
+        "input": "test",
+        "output": "tset",
+        "explanation": "The reverse of 'test' is 'tset'."
+      },
+      {
+        "input": "reverse",
+        "output": "esrever",
+        "explanation": "The reverse of 'reverse' is 'esrever'."
+      },
+      {
+        "input": "example",
+        "output": "elpmaxe",
+        "explanation": "The reverse of 'example' is 'elpmaxe'."
+      },
+      {
+        "input": "input",
+        "output": "tupni",
+        "explanation": "The reverse of 'input' is 'tupni'."
+      },
+      {
+        "input": "output",
+        "output": "tupuo",
+        "explanation": "The reverse of 'output' is 'tupuo'."
+      }
+    ],
+    "driverCode": "def reverse_string(s: str) -> str:\n    # Write your code here\n    return s[::-1]\n\nif __name__ == \"__main__\":\n    import sys\n    input_string = sys.stdin.read().strip()\n    print(reverse_string(input_string))",
+    "hints": ["You can use Python's slicing feature to reverse the string in one line."],
+    "created_at": "2024-05-28T12:00:00Z",
+    "updated_at": "2024-05-28T12:00:00Z"
+  },
+  {
+    "title": "Check Palindrome",
+    "description": "<p>Write a function to check if a given string is a palindrome. A palindrome reads the same backward as forward.</p>",
+    "difficulty": "Easy",
+    "assumptions": ["The input will always be a valid string."],
+    "constraints": "<ul><li>The length of the string is between <b>1</b> and <b>1000</b>.</li></ul>",
+    "content": "Write a function to check if a given string is a palindrome. A palindrome reads the same backward as forward.",
+    "topicTags": ["String Manipulation"],
+    "similarQuestions": ["Reverse a String", "String Rotation"],
+    "sampleTestCase": [
+      {
+        "input": "racecar",
+        "output": "True",
+        "explanation": "The string 'racecar' reads the same forward and backward, thus it is a palindrome."
+      },
+      {
+        "input": "hello",
+        "output": "False",
+        "explanation": "The string 'hello' does not read the same forward and backward, thus it is not a palindrome."
+      }
+    ],
+    "allTestCases": [
+      {
+        "input": "madam",
+        "output": "True",
+        "explanation": "The string 'madam' reads the same forward and backward."
+      },
+      {
+        "input": "step on no pets",
+        "output": "False",
+        "explanation": "The string 'step on no pets' with spaces is not a palindrome."
+      },
+      {
+        "input": "noon",
+        "output": "True",
+        "explanation": "The string 'noon' reads the same forward and backward."
+      },
+      {
+        "input": "civic",
+        "output": "True",
+        "explanation": "The string 'civic' reads the same forward and backward."
+      },
+      {
+        "input": "level",
+        "output": "True",
+        "explanation": "The string 'level' reads the same forward and backward."
+      },
+      {
+        "input": "rotor",
+        "output": "True",
+        "explanation": "The string 'rotor' reads the same forward and backward."
+      },
+      {
+        "input": "hello world",
+        "output": "False",
+        "explanation": "The string 'hello world' does not read the same forward and backward."
+      },
+      {
+        "input": "radar",
+        "output": "True",
+        "explanation": "The string 'radar' reads the same forward and backward."
+      },
+      {
+        "input": "python",
+        "output": "False",
+        "explanation": "The string 'python' does not read the same forward and backward."
+      },
+      {
+        "input": "abcba",
+        "output": "True",
+        "explanation": "The string 'abcba' reads the same forward and backward."
+      }
+    ],
+    "driverCode": "def is_palindrome(s: str) -> bool:\n    # Write your code here\n    return s == s[::-1]\n\nif __name__ == \"__main__\":\n    import sys\n    input_string = sys.stdin.read().strip()\n    print(is_palindrome(input_string))",
+    "hints": ["You can use Python's slicing feature to reverse the string and compare it with the original string."],
+    "created_at": "2024-05-28T12:00:00Z",
+    "updated_at": "2024-05-28T12:00:00Z"
+  },
+  {
+    "title": "Longest Substring Without Repeating Characters",
+    "description": "<p>Write a function to find the length of the <b>longest substring</b> without repeating characters in a given string.</p>",
+    "difficulty": "Medium",
+    "assumptions": ["The input string will only contain ASCII characters."],
+    "constraints": "<ul><li><b>Time Complexity:</b> The solution should run in <code>O(n)</code> time, where <code>n</code> is the length of the string.</li><li><b>Space Complexity:</b> The solution should use <code>O(min(n, m))</code> space, where <code>m</code> is the size of the character set.</li></ul>",
+    "content": "Write a function to find the length of the longest substring without repeating characters in a given string.",
+    "topicTags": ["String", "Hash Table", "Sliding Window"],
+    "similarQuestions": ["Substring with Concatenation of All Words", "Longest Substring with At Most Two Distinct Characters"],
+    "sampleTestCase": [
+      {
+        "input": "abcabcbb",
+        "output": "3",
+        "explanation": "The answer is 'abc', with the length of 3. This substring has no repeating characters."
+      },
+      {
+        "input": "bbbbb",
+        "output": "1",
+        "explanation": "The answer is 'b', with the length of 1. All characters in the string are the same."
+      },
+      {
+        "input": "pwwkew",
+        "output": "3",
+        "explanation": "The answer is 'wke', with the length of 3. This substring has no repeating characters."
+      }
+    ],
+    "allTestCases": [
+      {
+        "input": "abcabcbb",
+        "output": "3",
+        "explanation": "The answer is 'abc', with the length of 3. This substring has no repeating characters."
+      },
+      {
+        "input": "bbbbb",
+        "output": "1",
+        "explanation": "The answer is 'b', with the length of 1. All characters in the string are the same."
+      },
+      {
+        "input": "pwwkew",
+        "output": "3",
+        "explanation": "The answer is 'wke', with the length of 3. This substring has no repeating characters."
+      },
+      {
+        "input": "aab",
+        "output": "2",
+        "explanation": "The answer is 'ab', with the length of 2. This substring has no repeating characters."
+      },
+      {
+        "input": "dvdf",
+        "output": "3",
+        "explanation": "The answer is 'vdf', with the length of 3. This substring has no repeating characters."
+      },
+      {
+        "input": "anviaj",
+        "output": "5",
+        "explanation": "The answer is 'nviaj', with the length of 5. This substring has no repeating characters."
+      },
+      {
+        "input": "tmmzuxt",
+        "output": "5",
+        "explanation": "The answer is 'mzuxt', with the length of 5. This substring has no repeating characters."
+      },
+      {
+        "input": "",
+        "output": "0",
+        "explanation": "An empty string has a length of 0."
+      },
+      {
+        "input": "abcdefg",
+        "output": "7",
+        "explanation": "The answer is 'abcdefg', with the length of 7. This substring has no repeating characters."
+      },
+      {
+        "input": "abba",
+        "output": "2",
+        "explanation": "The answer is 'ab', with the length of 2. This substring has no repeating characters."
+      }
+    ],
+    "driverCode": "def lengthOfLongestSubstring(s: str) -> int:\n    # Write your code here\n\nif __name__ == '__main__':\n    import sys\n    input = sys.stdin.read().strip()\n    print(lengthOfLongestSubstring(input))",
+    "hints": ["Use a sliding window approach to keep track of the current substring.", "Use a set to keep track of characters in the current substring."]
+  },
+  {
+    "title": "String Rotation",
+    "description": "<p>Write a function to check if one string is a rotation of another string. For example, 'waterbottle' is a rotation of 'erbottlewat'.</p>",
+    "difficulty": "Medium",
+    "assumptions": ["The input strings will always be valid.", "Both strings are of equal length."],
+    "constraints": "<ul><li>The length of the strings is between <b>1</b> and <b>1000</b>.</li></ul>",
+    "content": "Write a function to check if one string is a rotation of another string. For example, 'waterbottle' is a rotation of 'erbottlewat'.",
+    "topicTags": ["String Manipulation"],
+    "similarQuestions": ["Check Palindrome", "Reverse a String"],
+    "sampleTestCase": [
+      {
+        "input": {"str1": "waterbottle", "str2": "erbottlewat"},
+        "output": "True",
+        "explanation": "The string 'erbottlewat' is a rotation of 'waterbottle'."
+      },
+      {
+        "input": {"str1": "hello", "str2": "ohell"},
+        "output": "True",
+        "explanation": "The string 'ohell' is a rotation of 'hello'."
+      }
+    ],
+    "allTestCases": [
+      {
+        "input": {"str1": "waterbottle", "str2": "erbottlewat"},
+        "output": "True",
+        "explanation": "The string 'erbottlewat' is a rotation of 'waterbottle'."
+      },
+      {
+        "input": {"str1": "abcd", "str2": "cdab"},
+        "output": "True",
+        "explanation": "The string 'cdab' is a rotation of 'abcd'."
+      },
+      {
+        "input": {"str1": "abcd", "str2": "acbd"},
+        "output": "False",
+        "explanation": "The string 'acbd' is not a rotation of 'abcd'."
+      },
+      {
+        "input": {"str1": "python", "str2": "thonpy"},
+        "output": "True",
+        "explanation": "The string 'thonpy' is a rotation of 'python'."
+      },
+      {
+        "input": {"str1": "java", "str2": "avaj"},
+        "output": "False",
+        "explanation": "The string 'avaj' is not a rotation of 'java'."
+      }
+    ],
+    "driverCode": "def is_rotation(str1: str, str2: str) -> bool:\n    # Write your code here\n\nif __name__ == '__main__':\n    import sys\n    input = sys.stdin.read().split()\n    str1, str2 = input[0], input[1]\n    print(is_rotation(str1, str2))",
+    "hints": ["Consider concatenating one string to itself and checking if the other string is a substring of this new string."]
+  },
+  {
+    "title": "Anagram Check",
+    "description": "<p>Write a function to determine if two strings are anagrams of each other. An anagram is a word or phrase formed by rearranging the letters of a different word or phrase.</p>",
+    "difficulty": "Easy",
+    "assumptions": ["The input strings will always be valid.", "Both strings are case-sensitive."],
+    "constraints": "<ul><li>The length of the strings is between <b>1</b> and <b>1000</b>.</li></ul>",
+    "content": "Write a function to determine if two strings are anagrams of each other. An anagram is a word or phrase formed by rearranging the letters of a different word or phrase.",
+    "topicTags": ["String Manipulation"],
+    "similarQuestions": ["Check Palindrome", "String Rotation"],
+    "sampleTestCase": [
+      {
+        "input": {"str1": "listen", "str2": "silent"},
+        "output": "True",
+        "explanation": "The strings 'listen' and 'silent' are anagrams."
+      },
+      {
+        "input": {"str1": "hello", "str2": "bello"},
+        "output": "False",
+        "explanation": "The strings 'hello' and 'bello' are not anagrams."
+      }
+    ],
+    "allTestCases": [
+      {
+        "input": {"str1": "listen", "str2": "silent"},
+        "output": "True",
+        "explanation": "The strings 'listen' and 'silent' are anagrams."
+      },
+      {
+        "input": {"str1": "triangle", "str2": "integral"},
+        "output": "True",
+        "explanation": "The strings 'triangle' and 'integral' are anagrams."
+      },
+      {
+        "input": {"str1": "apple", "str2": "papel"},
+        "output": "True",
+        "explanation": "The strings 'apple' and 'papel' are anagrams."
+      },
+      {
+        "input": {"str1": "rat", "str2": "car"},
+        "output": "False",
+        "explanation": "The strings 'rat' and 'car' are not anagrams."
+      },
+      {
+        "input": {"str1": "night", "str2": "thing"},
+        "output": "True",
+        "explanation": "The strings 'night' and 'thing' are anagrams."
+      }
+    ],
+    "driverCode": "def is_anagram(str1: str, str2: str) -> bool:\n    # Write your code here\n\nif __name__ == '__main__':\n    import sys\n    input = sys.stdin.read().split()\n    str1, str2 = input[0], input[1]\n    print(is_anagram(str1, str2))",
+    "hints": ["You can sort both strings and compare them.", "Alternatively, you can use a hash map to count character frequencies in both strings."]
+  },
+  {
+    "title": "First Unique Character in a String",
+    "description": "<p>Write a function to find the first non-repeating character in a given string and return its index. If it does not exist, return -1.</p>",
+    "difficulty": "Easy",
+    "assumptions": ["The input will always be a valid string."],
+    "constraints": "<ul><li>The length of the string is between <b>1</b> and <b>1000</b>.</li></ul>",
+    "content": "Write a function to find the first non-repeating character in a given string and return its index. If it does not exist, return -1.",
+    "topicTags": ["String Manipulation"],
+    "similarQuestions": ["Longest Substring Without Repeating Characters", "Anagram Check"],
+    "sampleTestCase": [
+      {
+        "input": "leetcode",
+        "output": "0",
+        "explanation": "The first non-repeating character in 'leetcode' is 'l', which is at index 0."
+      },
+      {
+        "input": "loveleetcode",
+        "output": "2",
+        "explanation": "The first non-repeating character in 'loveleetcode' is 'v', which is at index 2."
+      }
+    ],
+    "allTestCases": [
+      {
+        "input": "leetcode",
+        "output": "0",
+        "explanation": "The first non-repeating character in 'leetcode' is 'l', which is at index 0."
+      },
+      {
+        "input": "loveleetcode",
+        "output": "2",
+        "explanation": "The first non-repeating character in 'loveleetcode' is 'v', which is at index 2."
+      },
+      {
+        "input": "aabb",
+        "output": "-1",
+        "explanation": "There are no non-repeating characters in 'aabb'."
+      },
+      {
+        "input": "abcdef",
+        "output": "0",
+        "explanation": "The first non-repeating character in 'abcdef' is 'a', which is at index 0."
+      },
+      {
+        "input": "zzyyxx",
+        "output": "-1",
+        "explanation": "There are no non-repeating characters in 'zzyyxx'."
+      }
+    ],
+    "driverCode": "def first_uniq_char(s: str) -> int:\n    # Write your code here\n\nif __name__ == '__main__':\n    import sys\n    input = sys.stdin.read().strip()\n    print(first_uniq_char(input))",
+    "hints": ["Use a hash map to store the frequency of each character.", "Traverse the string again to find the first character with a frequency of one."]
+  },  
+
+  {
+    "title": "Count and Say",
+    "description": "<p>Write a function to generate the nth term of the count-and-say sequence. The count-and-say sequence is a sequence of digit strings defined by the recursive formula:</p><ul><li><code>countAndSay(1) = '1'</code></li><li><code>countAndSay(n)</code> is the way you would 'say' the digit string from <code>countAndSay(n-1)</code>, which is then converted into a different digit string.</li></ul>",
+    "difficulty": "Medium",
+    "assumptions": ["The input will always be a positive integer."],
+    "constraints": "<ul><li>The input is an integer <b>n</b> such that <b>1</b> ≤ <b>n</b> ≤ <b>30</b>.</li></ul>",
+    "content": "Write a function to generate the nth term of the count-and-say sequence.",
+    "topicTags": ["String Manipulation"],
+    "similarQuestions": ["String Compression", "Look-and-say Sequence"],
+    "sampleTestCase": [
+      {
+        "input": "1",
+        "output": "1",
+        "explanation": "The first term is '1'."
+      },
+      {
+        "input": "4",
+        "output": "1211",
+        "explanation": "The fourth term is '1211'."
+      }
+    ],
+    "allTestCases": [
+      {
+        "input": "1",
+        "output": "1",
+        "explanation": "The first term is '1'."
+      },
+      {
+        "input": "2",
+        "output": "11",
+        "explanation": "The second term is '11'."
+      },
+      {
+        "input": "3",
+        "output": "21",
+        "explanation": "The third term is '21'."
+      },
+      {
+        "input": "4",
+        "output": "1211",
+        "explanation": "The fourth term is '1211'."
+      },
+      {
+        "input": "5",
+        "output": "111221",
+        "explanation": "The fifth term is '111221'."
+      }
+    ],
+    "driverCode": "def count_and_say(n: int) -> str:\n    # Write your code here\n\nif __name__ == '__main__':\n    import sys\n    input = sys.stdin.read().strip()\n    n = int(input)\n    print(count_and_say(n))",
+    "hints": ["Use recursion or iteration to build the sequence.", "Read out the digits of the previous term."]
+  },
+  {
+    "title": "Longest Palindromic Substring",
+    "description": "<p>Write a function to find the longest palindromic substring in a given string.</p>",
+    "difficulty": "Medium",
+    "assumptions": ["The input will always be a valid string."],
+    "constraints": "<ul><li>The length of the string is between <b>1</b> and <b>1000</b>.</li></ul>",
+    "content": "Write a function to find the longest palindromic substring in a given string.",
+    "topicTags": ["String Manipulation"],
+    "similarQuestions": ["Palindrome Check", "Longest Substring Without Repeating Characters"],
+    "sampleTestCase": [
+      {
+        "input": "babad",
+        "output": "bab",
+        "explanation": "The longest palindromic substring is 'bab'."
+      },
+      {
+        "input": "cbbd",
+        "output": "bb",
+        "explanation": "The longest palindromic substring is 'bb'."
+      }
+    ],
+    "allTestCases": [
+      {
+        "input": "babad",
+        "output": "bab",
+        "explanation": "The longest palindromic substring is 'bab'."
+      },
+      {
+        "input": "cbbd",
+        "output": "bb",
+        "explanation": "The longest palindromic substring is 'bb'."
+      },
+      {
+        "input": "a",
+        "output": "a",
+        "explanation": "The longest palindromic substring is 'a'."
+      },
+      {
+        "input": "ac",
+        "output": "a",
+        "explanation": "The longest palindromic substring is 'a'."
+      },
+      {
+        "input": "racecar",
+        "output": "racecar",
+        "explanation": "The longest palindromic substring is 'racecar'."
+      }
+    ],
+    "driverCode": "def longest_palindromic_substring(s: str) -> str:\n    # Write your code here\n\nif __name__ == '__main__':\n    import sys\n    input = sys.stdin.read().strip()\n    print(longest_palindromic_substring(input))",
+    "hints": ["Expand around center to find palindromes.", "Consider each character and each pair of characters as potential centers."]
+  },
+  {
+    "title": "String Compression",
+    "description": "<p>Write a function to perform basic string compression using the counts of repeated characters. For example, the string 'aabcccccaaa' would become 'a2b1c5a3'. If the compressed string is not smaller than the original string, return the original string.</p>",
+    "difficulty": "Medium",
+    "assumptions": ["The input will always be a valid string."],
+    "constraints": "<ul><li>The length of the string is between <b>1</b> and <b>1000</b>.</li></ul>",
+    "content": "Write a function to perform basic string compression using the counts of repeated characters.",
+    "topicTags": ["String Manipulation"],
+    "similarQuestions": ["Count and Say", "String Rotation"],
+    "sampleTestCase": [
+      {
+        "input": "aabcccccaaa",
+        "output": "a2b1c5a3",
+        "explanation": "The compressed string is 'a2b1c5a3'."
+      },
+      {
+        "input": "abcd",
+        "output": "abcd",
+        "explanation": "The compressed string is not shorter, so return the original string."
+      }
+    ],
+    "allTestCases": [
+      {
+        "input": "aabcccccaaa",
+        "output": "a2b1c5a3",
+        "explanation": "The compressed string is 'a2b1c5a3'."
+      },
+      {
+        "input": "abcd",
+        "output": "abcd",
+        "explanation": "The compressed string is not shorter, so return the original string."
+      },
+      {
+        "input": "aaabbbccc",
+        "output": "a3b3c3",
+        "explanation": "The compressed string is 'a3b3c3'."
+      },
+      {
+        "input": "aabbcc",
+        "output": "aabbcc",
+        "explanation": "The compressed string is not shorter, so return the original string."
+      },
+      {
+        "input": "a",
+        "output": "a",
+        "explanation": "The compressed string is not shorter, so return the original string."
+      }
+    ],
+    "driverCode": "def compress_string(s: str) -> str:\n    # Write your code here\n\nif __name__ == '__main__':\n    import sys\n    input = sys.stdin.read().strip()\n    print(compress_string(input))",
+    "hints": ["Use a list to build the compressed string.", "Iterate through the string and count consecutive characters."]
+  },
+
+  {
+    "title": "Integer to Roman",
+    "description": "<p>Write a function to convert an integer to a Roman numeral. The given integer is guaranteed to be within the range from <b>1</b> to <b>3999</b>.</p>",
+    "difficulty": "Medium",
+    "assumptions": ["The input will always be a valid integer within the specified range."],
+    "constraints": "<ul><li>The input is an integer <b>n</b> such that <b>1</b> ≤ <b>n</b> ≤ <b>3999</b>.</li></ul>",
+    "content": "Write a function to convert an integer to a Roman numeral.",
+    "topicTags": ["Number Manipulation"],
+    "similarQuestions": ["Roman to Integer", "Integer to Binary"],
+    "sampleTestCase": [
+      {
+        "input": "3",
+        "output": "III",
+        "explanation": "The integer 3 is represented as 'III' in Roman numerals."
+      },
+      {
+        "input": "58",
+        "output": "LVIII",
+        "explanation": "The integer 58 is represented as 'LVIII' in Roman numerals."
+      }
+    ],
+    "allTestCases": [
+      {
+        "input": "3",
+        "output": "III",
+        "explanation": "The integer 3 is represented as 'III' in Roman numerals."
+      },
+      {
+        "input": "4",
+        "output": "IV",
+        "explanation": "The integer 4 is represented as 'IV' in Roman numerals."
+      },
+      {
+        "input": "9",
+        "output": "IX",
+        "explanation": "The integer 9 is represented as 'IX' in Roman numerals."
+      },
+      {
+        "input": "58",
+        "output": "LVIII",
+        "explanation": "The integer 58 is represented as 'LVIII' in Roman numerals."
+      },
+      {
+        "input": "1994",
+        "output": "MCMXCIV",
+        "explanation": "The integer 1994 is represented as 'MCMXCIV' in Roman numerals."
+      }
+    ],
+    "driverCode": "def int_to_roman(n: int) -> str:\n    # Write your code here\n\nif __name__ == '__main__':\n    import sys\n    input = sys.stdin.read().strip()\n    n = int(input)\n    print(int_to_roman(n))",
+    "hints": ["Use a dictionary to map integers to Roman numeral strings.", "Build the Roman numeral from the largest to smallest values."]
+  },
+  {
+    "title": "Roman to Integer",
+    "description": "<p>Write a function to convert a Roman numeral to an integer. The input is guaranteed to be within the range from <b>1</b> to <b>3999</b>.</p>",
+    "difficulty": "Medium",
+    "assumptions": ["The input will always be a valid Roman numeral."],
+    "constraints": "<ul><li>The input is a string representing a Roman numeral within the range from <b>I</b> to <b>MMMCMXCIX</b>.</li></ul>",
+    "content": "Write a function to convert a Roman numeral to an integer.",
+    "topicTags": ["Number Manipulation"],
+    "similarQuestions": ["Integer to Roman", "Binary to Integer"],
+    "sampleTestCase": [
+      {
+        "input": "III",
+        "output": "3",
+        "explanation": "The Roman numeral 'III' is represented as 3."
+      },
+      {
+        "input": "LVIII",
+        "output": "58",
+        "explanation": "The Roman numeral 'LVIII' is represented as 58."
+      }
+    ],
+    "allTestCases": [
+      {
+        "input": "III",
+        "output": "3",
+        "explanation": "The Roman numeral 'III' is represented as 3."
+      },
+      {
+        "input": "IV",
+        "output": "4",
+        "explanation": "The Roman numeral 'IV' is represented as 4."
+      },
+      {
+        "input": "IX",
+        "output": "9",
+        "explanation": "The Roman numeral 'IX' is represented as 9."
+      },
+      {
+        "input": "LVIII",
+        "output": "58",
+        "explanation": "The Roman numeral 'LVIII' is represented as 58."
+      },
+      {
+        "input": "MCMXCIV",
+        "output": "1994",
+        "explanation": "The Roman numeral 'MCMXCIV' is represented as 1994."
+      }
+    ],
+    "driverCode": "def roman_to_int(s: str) -> int:\n    # Write your code here\n\nif __name__ == '__main__':\n    import sys\n    input = sys.stdin.read().strip()\n    print(roman_to_int(input))",
+    "hints": ["Use a dictionary to map Roman numeral characters to integers.", "Iterate through the string and apply the Roman numeral rules."]
+  },
+  {
+    "title": "Reverse Integer",
+    "description": "<p>Write a function to reverse digits of a given integer. If reversing x causes the value to go outside the signed 32-bit integer range [-2^31, 2^31 - 1], then return 0.</p>",
+    "difficulty": "Medium",
+    "assumptions": ["The input will always be a valid 32-bit signed integer."],
+    "constraints": "<ul><li>The input is an integer <b>x</b> such that <b>-2^31</b> ≤ <b>x</b> ≤ <b>2^31 - 1</b>.</li></ul>",
+    "content": "Write a function to reverse digits of a given integer.",
+    "topicTags": ["Number Manipulation"],
+    "similarQuestions": ["String to Integer (atoi)", "Palindrome Number"],
+    "sampleTestCase": [
+      {
+        "input": "123",
+        "output": "321",
+        "explanation": "The reversed integer is 321."
+      },
+      {
+        "input": "-123",
+        "output": "-321",
+        "explanation": "The reversed integer is -321."
+      }
+    ],
+    "allTestCases": [
+      {
+        "input": "123",
+        "output": "321",
+        "explanation": "The reversed integer is 321."
+      },
+      {
+        "input": "-123",
+        "output": "-321",
+        "explanation": "The reversed integer is -321."
+      },
+      {
+        "input": "120",
+        "output": "21",
+        "explanation": "The reversed integer is 21."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "The reversed integer is 0."
+      },
+      {
+        "input": "1534236469",
+        "output": "0",
+        "explanation": "The reversed integer exceeds the 32-bit signed integer range, so return 0."
+      }
+    ],
+    "driverCode": "def reverse_integer(x: int) -> int:\n    # Write your code here\n\nif __name__ == '__main__':\n    import sys\n    input = sys.stdin.read().strip()\n    x = int(input)\n    print(reverse_integer(x))",
+    "hints": ["Handle the sign of the integer.", "Use modular arithmetic to reverse the digits."]
+  },
+  {
+    "title": "Add Two Numbers",
+    "description": "<p>Write a function to add two integers without using the '+' operator. You may use bitwise operations.</p>",
+    "difficulty": "Hard",
+    "assumptions": ["The input will always be two valid 32-bit signed integers."],
+    "constraints": "<ul><li>The inputs are integers <b>a</b> and <b>b</b> such that <b>-2^31</b> ≤ <b>a, b</b> ≤ <b>2^31 - 1</b>.</li></ul>",
+    "content": "Write a function to add two integers without using the '+' operator.",
+    "topicTags": ["Number Manipulation"],
+    "similarQuestions": ["Sum of Two Integers", "Subtraction without Minus"],
+    "sampleTestCase": [
+      {
+        "input": {"a": "1", "b": "2"},
+        "output": "3",
+        "explanation": "The sum of 1 and 2 is 3."
+      },
+      {
+        "input": {"a": "-2", "b": "3"},
+        "output": "1",
+        "explanation": "The sum of -2 and 3 is 1."
+      }
+    ],
+    "allTestCases": [
+      {
+        "input": {"a": "1", "b": "2"},
+        "output": "3",
+        "explanation": "The sum of 1 and 2 is 3."
+      },
+      {
+        "input": {"a": "-2", "b": "3"},
+        "output": "1",
+        "explanation": "The sum of -2 and 3 is 1."
+      },
+      {
+        "input": {"a": "0", "b": "0"},
+        "output": "0",
+        "explanation": "The sum of 0 and 0 is 0."
+      },
+      {
+        "input": {"a": "123", "b": "456"},
+        "output": "579",
+        "explanation": "The sum of 123 and 456 is 579."
+      },
+      {
+        "input": {"a": "-1", "b": "-1"},
+        "output": "-2",
+        "explanation": "The sum of -1 and -1 is -2."
+      }
+    ],
+    "driverCode": "def add_two_numbers(a: int, b: int) -> int:\n    # Write your code here\n\nif __name__ == '__main__':\n    import sys\n    input = sys.stdin.read().strip().split()\n    a, b = int(input[0]), int(input[1])\n    print(add_two_numbers(a, b))",
+    "hints": ["Use bitwise XOR to add without carrying.", "Use bitwise AND and left shift to handle the carry."]
+  }
+]
