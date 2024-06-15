@@ -71,33 +71,33 @@ const googleStrategyMiddleware = new GoogleStrategy(
             include: { AuthProvider: true },
           });
 
-          console.log(newUser);
+          logger.log('info', newUser);
           done(null, newUser);
         }
       }
     } catch (err) {
-      console.error(err);
+      logger.log({ level: "error", message: `${err}` });
       done(err, null);
     }
   }
 );
 
-const serializeMiddleware = (user: any, done: any) => {
+const serializeMiddleware = (user: Partial<any>, done: any) => {
   try {
     // console.log(user);
     done(null, user.id);
   } catch (err) {
-    console.error(err);
+    logger.log({ level: "error", message: `${err}` });
     done(err, null);
   }
 };
 
-const deserializeMiddleware = async (id: any, done: any) => {
-  console.log(id);
+const deserializeMiddleware = async (userId: any, done: any) => {
+  console.log(userId);
   try {
-    logger.info(`auth user ID ${id}`);
+    logger.info(`auth user ID ${userId}`);
     const user = await prisma.appUser.findFirst({
-      where: { id: id },
+      where: { id: parseInt(userId) },
       include: { AuthProvider: true },
     });
 
@@ -115,5 +115,3 @@ const deserializeMiddleware = async (id: any, done: any) => {
 passport.use(googleStrategyMiddleware);
 passport.serializeUser(serializeMiddleware);
 passport.deserializeUser(deserializeMiddleware);
-
-export default passport;
