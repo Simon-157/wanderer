@@ -82,7 +82,7 @@ export const getChallengeTitleAndDifficulty = async (req: any, res: any) : Promi
             res.status(404).json({ message: "Challenge not found" });
             return;
         }
-        res.status(200).json({ title: challenge.title, difficulty: challenge.difficulty }); 
+        res.status(200).json({challenge_id: challenge.challenge_id, title: challenge.title, difficulty: challenge.difficulty }); 
     } catch (error) {
         res.status(500).json({ message: "Failed to fetch challenge", error });
     }
