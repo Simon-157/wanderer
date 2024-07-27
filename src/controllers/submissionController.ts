@@ -86,8 +86,24 @@ export const createSubmissionOrRunTests = async (
                     runtime: results.runtime,
                     memory: results.memory,
                     practiceSessionId: sessionId,
+                    
                 },
             });
+
+            // update practice session
+            await prisma.practiceSession.update({
+                where: { id: sessionId },
+                data: { endedAt: new Date() },
+            });
+
+            // create submission languages
+            await prisma.submissionLanguage.create({
+                data: {
+                    submission_id: submission.submission_id,
+                    language_id: languageId,                    
+                },
+            });
+        
 
             res.status(200).json({ results, status: "success" });
         }

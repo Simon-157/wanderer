@@ -38,6 +38,7 @@ app.use("/", rootRoutes);
 app.use("/auth", authRoutes);
 
 
+
 // api routes
 app.use("/api", apiRoutes);
 
