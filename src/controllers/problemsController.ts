@@ -71,6 +71,24 @@ export const getChallenges = async (req: any, res: any) : Promise<void> => {
 }
 
 
+// get challenge title, difficulty
+export const getChallengeTitleAndDifficulty = async (req: any, res: any) : Promise<void> => {
+    const { id } = req.params;
+    try {
+        const challenge = await prisma.challenge.findUnique({
+            where: {challenge_id: parseInt(id) }
+        });
+        if (!challenge) {
+            res.status(404).json({ message: "Challenge not found" });
+            return;
+        }
+        res.status(200).json({ title: challenge.title, difficulty: challenge.difficulty }); 
+    } catch (error) {
+        res.status(500).json({ message: "Failed to fetch challenge", error });
+    }
+}
+
+
 
 export const getChallenge = async (req: any, res: any) : Promise<void> => {
     const { id } = req.params;
