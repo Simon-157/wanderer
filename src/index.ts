@@ -34,13 +34,13 @@ app.use((req, res, next) => {
 app.use(httpLogger);
 
 // routes stack
-app.use("/", rootRoutes);
-app.use("/auth", authRoutes);
+app.use("/v1", rootRoutes);
+app.use("/v1/auth", authRoutes);
 
 
 
 // api routes
-app.use("/api", apiRoutes);
+app.use("/v1/api", apiRoutes);
 
 
 app.use(notFoundHandler);
